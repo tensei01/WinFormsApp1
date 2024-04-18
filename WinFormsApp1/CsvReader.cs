@@ -9,9 +9,9 @@ namespace WinFormsApp1
 {
     internal class CvsReader
     {
-        public Dictionary<String, List<List<double>>> ReadCsv(String path)
+        public List<MorderRow> ReadCsv(String path)
         {
-            Dictionary<String, List<List<double>>> result = new Dictionary<string, List<List<double>>>();
+            List<MorderRow> result = new List<MorderRow>();
 
             using (TextFieldParser csvParser = new TextFieldParser(path))
             {
@@ -46,15 +46,21 @@ namespace WinFormsApp1
                         continue;
                     }
 
-                    if (!result.ContainsKey(country))
+                    MorderRow row = new MorderRow
                     {
-                        result[country] = new List<List<double>>();
-                    }
+                        Country = country,
+                        Year = year,
+                        Gdp = gdp,
+                        LifeExpectancy = (int)lifeExpectancy,
+                        UnemploymentRate = unemploymentRate,
+                        InflationRate = inflation,
+                        MortalityRate = (int)mortalityRate
+                    };
 
-                    result[country].Add(new List<double> { year, gdp, lifeExpectancy, inflation, unemploymentRate, mortalityRate });
-                   
+                    result.Add(row);
                 }
             }
+
             return result;
         }
     }
