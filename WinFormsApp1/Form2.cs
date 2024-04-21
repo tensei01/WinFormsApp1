@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathNet.Numerics.Statistics;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,70 +9,118 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WinFormsApp1
 {
     public partial class Form2 : Form
     {
-        private Dictionary<string, List<List<double>>> _data;
-        private CvsReader _cvsReader;
         private Correlition _correlition;
 
-        public Form2(string filePath)
+        public Form2()
         {
             InitializeComponent();
-            _cvsReader = new CvsReader();
-            _data = _cvsReader.ReadCsv(filePath);
-            comboBox1.DataSource = new BindingSource(_data.Keys, null);
+            Console.WriteLine("DrawCorrelationChart started one");
+
             _correlition = new Correlition();
+
+            List<MorderRow> data = Context._data;
+
+            int n = data.Count;
+            int m = 5;
+            double[,] matrix = new double[n, m];
+
+            for (int i = 0; i < n; i++)
+            {
+                matrix[i, 0] = data[i].Gdp;
+                matrix[i, 1] = data[i].LifeExpectancy;
+                matrix[i, 2] = data[i].UnemploymentRate;
+                matrix[i, 3] = data[i].InflationRate;
+                matrix[i, 4] = data[i].MortalityRate;
+            }
+
+            double[] correlations = _correlition.PearsonCorrelation(matrix);
+
+            List<InfoCorrelation> infoCorrelations = _correlition.getInfoCorrelation(correlations);
+
+            DataTable table = new DataTable();
+            table.Columns.Add("Переменная", typeof(string));
+            table.Columns.Add("Корреляция", typeof(double));
+            table.Columns.Add("Вывод", typeof(string));
+
+            string[] variableNames = { "ВВП", "Продолжительность жизни", "Уровень безработицы", "Инфляция"};
+            for (int i = 0; i < infoCorrelations.Count; i++)
+            {
+                DataRow row = table.NewRow();
+                row["Переменная"] = variableNames[i];
+                row["Корреляция"] = infoCorrelations[i].value;
+                row["Вывод"] = infoCorrelations[i].info;
+                table.Rows.Add(row);
+            }
+
+            dataGridView1.DataSource = table;
+            DrawCorrelationChart(infoCorrelations, variableNames);
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void DrawCorrelationChart( List<InfoCorrelation> infoCorrelations, string[] variableNames)
         {
-            string key = comboBox1.SelectedItem.ToString();
-            List<List<double>> values = _data[key];
-            values.RemoveAt(0);// Удаление первого значения (года)
-            double[,] matrix = new double[values.Count, values[0].Count];
-            if (values.Count < 2)
+            chart1.ChartAreas.Clear();
+            ChartArea chartArea = new ChartArea();
+
+            Legend legend = new Legend();
+            chart1.Legends.Add(legend);
+            chart1.ChartAreas.Add(chartArea);
+
+            int m = 4;
+
+            // Добавляем серии для каждой переменной
+            chart1.Series.Clear();
+            for (int i = 0; i < m; i++)
             {
-                MessageBox.Show("Недостаточно данных для вычисления корреляции");
-                return;
+                chart1.Series.Add(variableNames[i]);
+                chart1.Series[i].ChartType = SeriesChartType.Line;
+                chart1.Series[i].MarkerStyle = MarkerStyle.Circle;
+                chart1.Series[i].MarkerSize = 10;
             }
-            for (int i = 0; i < values.Count; i++)
+
+            
+            // Добавляем точки на график
+            for (int i = 0; i < infoCorrelations.Count; i++)
             {
-                List<double> row = values[i];
-                if (row.Count != values[0].Count)
-                {
-                    MessageBox.Show("Некорректные данные в строке " + (i + 1));
-                    return;
-                }
-                for (int j = 0; j < row.Count; j++)
-                {
-                    if (double.IsNaN(row[j]))
-                    {
-                        MessageBox.Show("Некорректные данные в строке " + (i + 1) + " столбце " + (j + 1));
-                        return;
-                    }
-                }
+             
+               chart1.Series[i].Points.AddXY(i+1, infoCorrelations[i].value);
+                
             }
-            for (int i = 0; i < values.Count; i++)
-            {
-                for (int j = 0; j < values[i].Count; j++)
-                {
-                    matrix[i, j] = values[i][j];
-                }
-            }
-            double[] correlationCoefficients = _correlition.PearsonCorrelation(matrix);
-            List<InfoCorrelation> infoCorrelations = _correlition.getInfoCorrelation(correlationCoefficients);
-            // Вывод результатов в текстовое поле или таблицу
-            textBoxResult.Clear();
-            textBoxResult.AppendText("Результаты корреляции:\n");
-            foreach (var info in infoCorrelations)
-            {
-                textBoxResult.AppendText($"{info.info}: {info.value}\n");
-            }
+
+            // Настраиваем внешний вид графика
+            chart1.ChartAreas[0].AxisX.Title = "Номер переменной";
+            chart1.ChartAreas[0].AxisX.Minimum = 1;
+            chart1.ChartAreas[0].AxisX.Maximum = 4;
+            chart1.ChartAreas[0].AxisX.Interval = 1;
+            chart1.ChartAreas[0].AxisY.Title = "Значение корреляции";
+            chart1.ChartAreas[0].AxisY.Minimum = -1;
+            chart1.ChartAreas[0].AxisY.Maximum = 1;
+            chart1.ChartAreas[0].AxisY.Interval = 0.2;
+            chart1.Legends[0].Enabled = true;
+
+            // Обновляем график
+            chart1.Refresh();
         }
 
-        
+        private void textBoxResult_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

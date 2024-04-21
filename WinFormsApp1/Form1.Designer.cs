@@ -28,72 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBox1 = new ComboBox();
-            button1 = new Button();
             dataGridView1 = new DataGridView();
             button2 = new Button();
+            label1 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(14, 14);
-            comboBox1.Margin = new Padding(4, 3, 4, 3);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(140, 23);
-            comboBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(162, 12);
-            button1.Margin = new Padding(4, 3, 4, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(88, 27);
-            button1.TabIndex = 1;
-            button1.Text = "Показать";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 45);
+            dataGridView1.Location = new Point(20, 75);
+            dataGridView1.Margin = new Padding(4, 5, 4, 5);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(533, 170);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1091, 618);
             dataGridView1.TabIndex = 2;
             // 
             // button2
             // 
-            button2.Location = new Point(257, 14);
+            button2.Location = new Point(856, 23);
+            button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
-            button2.Size = new Size(82, 25);
+            button2.Size = new Size(126, 42);
             button2.TabIndex = 3;
             button2.Text = "Корреляция";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.Location = new Point(20, 27);
+            label1.Name = "label1";
+            label1.Size = new Size(117, 38);
+            label1.TabIndex = 4;
+            label1.Text = "Данные";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(990, 23);
+            button1.Margin = new Padding(4, 5, 4, 5);
+            button1.Name = "button1";
+            button1.Size = new Size(117, 42);
+            button1.TabIndex = 5;
+            button1.Text = "Регрессия";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(559, 227);
+            ClientSize = new Size(1120, 707);
+            Controls.Add(button1);
+            Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(dataGridView1);
-            Controls.Add(button1);
-            Controls.Add(comboBox1);
-            Margin = new Padding(4, 3, 4, 3);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(6, 5, 6, 5);
             Name = "Form1";
-            Text = "Form2";
+            Text = "Основная страница";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
         private DataGridView dataGridView1;
         private Button button2;
+        private Label label1;
+        private Button button1;
     }
 }

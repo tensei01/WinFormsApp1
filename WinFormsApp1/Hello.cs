@@ -13,6 +13,9 @@ namespace WinFormsApp1
 {
     public partial class Hello : Form
     {
+
+        private CvsReader reader = new CvsReader();
+
         public Hello()
         {
             InitializeComponent();
@@ -22,16 +25,19 @@ namespace WinFormsApp1
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string filePath = openFileDialog1.FileName;
-                // Чтение файла и передача данных на вторую страницу
-                Form1 form1 = new Form1(filePath);
+                Context._data = reader.ReadCsv(openFileDialog1.FileName);
+                Form1 form1 = new Form1();
                 this.Hide();
                 form1.ShowDialog();
-                this.Show();
             }
         }
 
         private void Hello_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
