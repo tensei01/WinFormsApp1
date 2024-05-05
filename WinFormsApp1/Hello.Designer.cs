@@ -29,10 +29,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Hello));
             label1 = new Label();
-            button1 = new Button();
             openFileDialog1 = new OpenFileDialog();
             pictureBox1 = new PictureBox();
-            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -48,17 +46,6 @@
             label1.Text = resources.GetString("label1.Text");
             label1.Click += label1_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(480, 350);
-            button1.Margin = new Padding(6, 5, 6, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(126, 45);
-            button1.TabIndex = 1;
-            button1.Text = "Загрузить файл";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
@@ -72,24 +59,12 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(12, 349);
-            label2.Name = "label2";
-            label2.Size = new Size(404, 38);
-            label2.TabIndex = 3;
-            label2.Text = "Загрузите данные для расчёта";
-            // 
             // Hello
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1078, 437);
-            Controls.Add(label2);
+            ClientSize = new Size(1078, 268);
             Controls.Add(pictureBox1);
-            Controls.Add(button1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(6, 5, 6, 5);
@@ -103,9 +78,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private PictureBox pictureBox1;
-        private Label label2;
     }
 }

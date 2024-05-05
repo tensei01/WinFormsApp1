@@ -23,18 +23,11 @@ namespace WinFormsApp1
 {
     public partial class CorrelationForm : Form
     {
-        private Correlition _correlition;
-
+        private Correlition _correlition = new Correlition();
+        private Export export = new Export();
         public CorrelationForm()
         {
             InitializeComponent();
-
-            comboBox1.Items.Add("Экспорт");
-            comboBox1.SelectedIndex = 0;
-            comboBox1.Items.Add("XLSX");
-            comboBox1.Items.Add("PDF");
-
-            _correlition = new Correlition();
 
             List<MorderRow> data = Context._data;
 
@@ -173,91 +166,14 @@ namespace WinFormsApp1
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void экспортВXLSXToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex != 0)
-            {
-                if (comboBox1.SelectedItem != null)
-                {
-                    switch (comboBox1.SelectedItem.ToString())
-                    {
-                        case "XLSX":
-                            ExportToExcel((DataTable)dataGridView1.DataSource);
-                            break;
-                        case "PDF":
-                            ExportToPDF((DataTable)dataGridView1.DataSource);
-                            break;
-                    }
-                }
-                comboBox1.SelectedIndex = 0;
-            }
+            export.ExportToExcel((DataTable)dataGridView1.DataSource, "correlation");
         }
 
-        public void ExportToExcel(DataTable table)
+        private void экспортВPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                string folderPath = folderBrowserDialog.SelectedPath;
-                string fileName = "correlation.xlsx";
-                string filePath = Path.Combine(folderPath, fileName);
-
-                using (ExcelPackage package = new ExcelPackage())
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Sheet1");
-                    worksheet.Cells["A1"].LoadFromDataTable(table, true);
-
-                    package.SaveAs(new FileInfo(filePath));
-                }
-
-                MessageBox.Show("Файл успешно сохранен.");
-            }
-        }
-
-        //TODO: Найти РУССКИЙ ШРИФТ, сейчас впадлу
-        public void ExportToPDF(DataTable dataTable)
-        {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-            {
-                string folderPath = folderBrowserDialog.SelectedPath;
-                string fileName = "сorrelation.pdf";
-                string filePath = Path.Combine(folderPath, fileName);
-
-                using (PdfWriter writer = new PdfWriter(filePath))
-                using (PdfDocument pdf = new PdfDocument(writer))
-                using (Document document = new Document(pdf))
-                {
-
-                    float[] columnWidths = new float[dataTable.Columns.Count];
-                    for (int i = 0; i < dataTable.Columns.Count; i++)
-                    {
-                        columnWidths[i] = 150;
-                    }
-
-                    Table table = new Table(columnWidths);
-                    table.SetWidth(UnitValue.CreatePercentValue(100));
-
-                    for (int i = 0; i < dataTable.Columns.Count; i++)
-                    {
-                        table.AddHeaderCell(new Cell().Add(new Paragraph(dataTable.Columns[i].ColumnName)));
-                    }
-
-                    for (int i = 0; i < dataTable.Rows.Count; i++)
-                    {
-                        for (int j = 0; j < dataTable.Columns.Count; j++)
-                        {
-                            table.AddCell(new Cell().Add(new Paragraph(dataTable.Rows[i][j].ToString())));
-                        }
-                    }
-
-                    Paragraph header = new Paragraph("Корреляция");
-                    document.Add(header);
-                    document.Add(table);
-                }
-
-                MessageBox.Show("Файл успешно сохранен.");
-            }
+            export.ExportToPDF((DataTable)dataGridView1.DataSource, "correlation");
         }
     }
 }

@@ -29,8 +29,13 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            comboBox1 = new ComboBox();
+            menuStrip1 = new MenuStrip();
+            экспортToolStripMenuItem = new ToolStripMenuItem();
+            экспортВXLSXToolStripMenuItem = new ToolStripMenuItem();
+            экспортВPDFToolStripMenuItem = new ToolStripMenuItem();
+            оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -46,34 +51,70 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // comboBox1
+            // menuStrip1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(12, 12);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 33);
-            comboBox1.TabIndex = 1;
-            comboBox1.SelectedIndexChanged += this.comboBox1_SelectedIndexChanged;
+            menuStrip1.ImageScalingSize = new Size(24, 24);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { экспортToolStripMenuItem, оПрограммеToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1178, 33);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // экспортToolStripMenuItem
+            // 
+            экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВXLSXToolStripMenuItem, экспортВPDFToolStripMenuItem });
+            экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
+            экспортToolStripMenuItem.Size = new Size(95, 29);
+            экспортToolStripMenuItem.Text = "Экспорт";
+            // 
+            // экспортВXLSXToolStripMenuItem
+            // 
+            экспортВXLSXToolStripMenuItem.Name = "экспортВXLSXToolStripMenuItem";
+            экспортВXLSXToolStripMenuItem.Size = new Size(270, 34);
+            экспортВXLSXToolStripMenuItem.Text = "Экспорт в XLSX";
+            экспортВXLSXToolStripMenuItem.Click += экспортВXLSXToolStripMenuItem_Click;
+            // 
+            // экспортВPDFToolStripMenuItem
+            // 
+            экспортВPDFToolStripMenuItem.Name = "экспортВPDFToolStripMenuItem";
+            экспортВPDFToolStripMenuItem.Size = new Size(270, 34);
+            экспортВPDFToolStripMenuItem.Text = "Экспорт в PDF";
+            экспортВPDFToolStripMenuItem.Click += экспортВPDFToolStripMenuItem_Click;
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            оПрограммеToolStripMenuItem.Size = new Size(141, 29);
+            оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // CorrelationForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1178, 744);
-            Controls.Add(comboBox1);
             Controls.Add(dataGridView1);
+            Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            MainMenuStrip = menuStrip1;
             Margin = new Padding(6, 5, 6, 5);
             Name = "CorrelationForm";
             Text = "Корреляция";
             Load += Form2_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
-        private ComboBox comboBox1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem экспортToolStripMenuItem;
+        private ToolStripMenuItem экспортВXLSXToolStripMenuItem;
+        private ToolStripMenuItem экспортВPDFToolStripMenuItem;
+        private ToolStripMenuItem оПрограммеToolStripMenuItem;
     }
 }

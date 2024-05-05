@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             button1 = new Button();
             comboBox2 = new ComboBox();
             chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -41,6 +41,7 @@
             экспортToolStripMenuItem = new ToolStripMenuItem();
             экспортPdfToolStripMenuItem = new ToolStripMenuItem();
             экспортXLSXToolStripMenuItem = new ToolStripMenuItem();
+            оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             menuStrip1.SuspendLayout();
@@ -66,16 +67,16 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
             chart1.Location = new Point(12, 97);
             chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
             chart1.Size = new Size(864, 571);
             chart1.TabIndex = 4;
             chart1.Text = "chart1";
@@ -110,7 +111,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { экспортToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { экспортToolStripMenuItem, оПрограммеToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(898, 33);
@@ -136,6 +137,12 @@
             экспортXLSXToolStripMenuItem.Size = new Size(226, 34);
             экспортXLSXToolStripMenuItem.Text = "Экспорт XLSX";
             // 
+            // оПрограммеToolStripMenuItem
+            // 
+            оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            оПрограммеToolStripMenuItem.Size = new Size(141, 29);
+            оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
             // RegressionWorldForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -148,7 +155,6 @@
             Controls.Add(button1);
             Controls.Add(comboBox2);
             Controls.Add(chart1);
-            Cursor = Cursors.Default;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "RegressionWorldForm";
             Text = "Мировая регрессия";
@@ -172,5 +178,6 @@
         private ToolStripMenuItem экспортToolStripMenuItem;
         private ToolStripMenuItem экспортPdfToolStripMenuItem;
         private ToolStripMenuItem экспортXLSXToolStripMenuItem;
+        private ToolStripMenuItem оПрограммеToolStripMenuItem;
     }
 }

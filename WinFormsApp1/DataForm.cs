@@ -6,10 +6,67 @@ namespace WinFormsApp1
     public partial class DataForm : Form
     {
 
+        private Export export = new Export();
+
         public DataForm()
         {
             InitializeComponent();
+        }
 
+        private void êîğğåëÿöèÿToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Context._data == null)
+            {
+                MessageBox.Show("Çàãğóçèòå äàííûå");
+                return;
+            }
+            CorrelationForm form2 = new CorrelationForm();
+            form2.Show();
+        }
+
+        private void ğåãğåññèÿÏîÑòğàíàìToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Context._data == null)
+            {
+                MessageBox.Show("Çàãğóçèòå äàííûå");
+                return;
+            }
+            RegressionFormCountry regForm = new RegressionFormCountry();
+            regForm.Show();
+        }
+
+        private void ìèğîâàÿĞåãğåññèÿToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Context._worldData == null)
+            {
+                MessageBox.Show("Çàãğóçèòå äàííûå");
+                return;
+            }
+            RegressionWorldForm regressionWorldForm = new RegressionWorldForm();
+            regressionWorldForm.Show();
+        }
+
+        private void îòêğûòüToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    CvsReader reader = new CvsReader();
+                    Context._data = reader.ReadCsv(openFileDialog1.FileName);
+                    Context.calculate(Context._data);
+                    insertTable();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+
+        private void insertTable()
+        {
             List<MorderRow> morderRows = Context._data;
 
             DataTable table = new DataTable();
@@ -27,37 +84,23 @@ namespace WinFormsApp1
             }
 
             dataGridView1.DataSource = table;
-
+            dataGridView1.Refresh();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void îÏğîãğàììåToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("DrawCorrelationChart started");
-            CorrelationForm form2 = new CorrelationForm();
-            form2.Show();
-
+            Hello hello = new Hello();
+            hello.Show();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void ıêñïîğòÂXLSXToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            export.ExportToExcel((DataTable)dataGridView1.DataSource, "data");
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ıêñïîğòÂPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            RegressionFormCountry regForm = new RegressionFormCountry();
-            regForm.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            RegressionWorldForm regressionWorldForm = new RegressionWorldForm();
-            regressionWorldForm.Show();
+            export.ExportToPDF((DataTable)dataGridView1.DataSource, "data");
         }
     }
 }
