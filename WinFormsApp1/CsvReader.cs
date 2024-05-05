@@ -46,6 +46,11 @@ namespace WinFormsApp1
                         continue;
                     }
 
+                    if(inflation < 0 || year < 0 || mortalityRate < 0 || gdp < 0 || lifeExpectancy < 0 || lifeExpectancy > 120 || unemploymentRate > 100 || unemploymentRate < 0) {
+                        MessageBox.Show("Ошибка в данных - " + country + " - " + year);
+                        throw new Exception("Ошибка чтения из файла");
+                    }
+
                     MorderRow row = new MorderRow
                     {
                         Country = country,

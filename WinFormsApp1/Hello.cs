@@ -25,10 +25,17 @@ namespace WinFormsApp1
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Context._data = reader.ReadCsv(openFileDialog1.FileName);
-                Form1 form1 = new Form1();
-                this.Hide();
-                form1.ShowDialog();
+                try
+                {
+                    Context._data = reader.ReadCsv(openFileDialog1.FileName);
+                    Context.calculate(Context._data);
+                    DataForm form1 = new DataForm();
+                    this.Hide();
+                    form1.ShowDialog();
+                } catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
         }
 

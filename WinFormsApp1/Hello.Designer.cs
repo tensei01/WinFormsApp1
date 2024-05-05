@@ -39,17 +39,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(228, 9);
+            label1.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.Location = new Point(270, 12);
             label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(1259, 250);
+            label1.Size = new Size(795, 150);
             label1.TabIndex = 0;
             label1.Text = resources.GetString("label1.Text");
             label1.Click += label1_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(734, 308);
+            button1.Location = new Point(480, 350);
             button1.Margin = new Padding(6, 5, 6, 5);
             button1.Name = "button1";
             button1.Size = new Size(126, 45);
@@ -67,7 +68,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(207, 247);
+            pictureBox1.Size = new Size(236, 235);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
@@ -75,7 +76,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(228, 308);
+            label2.Location = new Point(12, 349);
             label2.Name = "label2";
             label2.Size = new Size(404, 38);
             label2.TabIndex = 3;
@@ -85,7 +86,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1489, 382);
+            ClientSize = new Size(1078, 437);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
             Controls.Add(button1);

@@ -117,58 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Курсовая работа, разработанная студентами группы ЦИС-39: 
-Власовым С. В., Суханиным А. Г. и Воробьёвым С. А. 
-
-Наша программа представляет собой полезное приложение, 
-которое может расчитывать корреляцию и регрессию смертности по параметрам: 
-ВВП, Инфляция, Уровень безработицы, Продолжительность жизни.</value>
-  </data>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAABGdBTUEAALGPC/xhBQAAASZQTFRF////
-        DECJ63IB+v/2ACx7//75//7///r////0/fz/u8/XADl9eZKlvtPZDkCJfZip///sC0GHwc3UADKCEUCA
-        BUSJDj+L0nka8m0E9P//8XAA//riACxnGEN1y3AQ4WsA69ivAC118P//ADp1ADl7DD+PADiB0d3i9v/y
-        ADF1ADFqDj6RAClr4fP9xtvmts3Y3e3ok6rEaH6lLEuCAB1xm7DCU26NtcTUJk59FEVu0ubvRWOJTG2T
-        ADNpABtX4fj7Jk5xaIKcd5GlAC5hPFuDp7nHAC+EjKjGKVF8ADmJcoemL1CCznglxXox8OLI4XsY4rF2
-        7NSn2JRLx4hJ9OK87MCP+GcS2KBb//fU1ZpJ6nAS6dys0qFn3moY3ZVi2XowABFC69GYNzkAPQAAB2JJ
-        REFUeF7tnQtX2zYUgGWCjE0giYstUB6EBBya8FrZgPJaCpQWtnYpHd3Yxtbt//+JXTnaeNQJFKxrknO/
-        c9rDaYOkz5KlK1mRGUEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQgwzn+gdmJ4w75sLfOvEUicrC
-        M8bQ2aQL5/YY4CYNgz9jOo8U4Y660o4JMszmjs4mXeTK6uS4CdbWnn2j88CEK5jLeQb6mPr4i/Vvl5dr
-        o1OjyVOr1b57pnPFJOpalCdb2dhsNZsND8gBVoJE6XmBP5WaIfhtbZYXslYo/ivQ8Bhy6AJkfeNl7dSC
-        uhPmDHNpGTLO5NZ2ywtDqD8vUG3U617zBInSS8EQIgzVPnd2y75niVxO1Z/XLZIJUjHkNpMvymCnC2GU
-        NFopDMDtvaYnuv2LaVIxZKvb874fBAbb5hUpGHK5tQ93oDWcrVR1MmyrHIiIITSEYR4Gie99C8WtC3Yr
-        ddha2Q905ijgGsI4uLOP0r9cgdxKZftVFmWMuALNMFoqKcj1hW4MigeqIefHNehGddZIILZSmAy2960g
-        2eD6blAN2UEjhBmEzhoJPEMQXCyHSzAb1FkjgWYoXVvuQjeDPFagGrLJMnInE4HYStlmA7mBRuAZZnaa
-        OKH2LdAMXZ6fwr8JATzD+qs+fmGY83xPiDBM/CqEQfgGxZCvln2dZwyeZ6lYp9FoZJOmMX/63bguhFny
-        C30Gez8Q4WhlbyJvgonDRV0Gs2z2GwuFqO2t1eFT/z8pTRQzqd5CHoUhtMV4ct7+Mctkosc1iTPGn+sy
-        mGWy3KMTUQve1v6OiuoAA8+jXSb1T2Y5boogNiQNgPIqG9OKg8thVgSxPQ30otkN5ro4N4sZoso5aFi+
-        FReX5izxUg549UWGry3hx07vw3DhBXxkoB2j0le8XPzUUITLMFwNdiVC6blsQUwWO1oEYkHyJ7Cl5zFE
-        huVehr5VYWT41IkM53u20nAIWqnqRioWCMZG3mIIehoOkVPP0UJYQzJa9BzxoeVWBn3Ejzhs9Izawuag
-        R23RBtaekbfneX5rFdrxADfUyHC1LHpM8T2YP1WGYPZUP+qzMyHntQZ/Bsw2o06lByIc/FUMls/2MfR9
-        EY7u7x5O5CeSJp8/xFmJclabsSFNF/ivaLBMfjmxgbaayOsn8VFbxLUVYf0vSSHQVoRdnn9joW4z0SA+
-        e9pp6jxxQX26hr3RJALNULpsfHnIDW25lxVhwhud7wbNkLtjEiK3pe6ogAieoW07cn2Yd5twmzlspWXh
-        bAy+BmodwhxqGXfrJYBZh5xxeTA/tHXYhbdPhtuQO+zt1LD2pV34YgvnWxZX4Bq69RNviHdfqiWYw4Ww
-        zzzYCHiGEvrS1aMAfecXmiEMFTAJnldr+zprJPAMeYYfN73Qir4QhAiaIQz4sqLC7iE2ZMc1K6eWY3TW
-        SOAZOvLkXhOnBL8qq5JC/B4wf9bSGfcnYUO8OmTsIHuvbjRhQ8Q6XKncb6BI2BCxDseb8YZKR4QiCMTp
-        lJFTI6awTo344TT+GbAQXm5pSXgLrYONtUkDrI0jnfzxWvQytDzhzzfetiXn+sSVJEE7vaW93MNQbV73
-        F3bbnKvzctQhPMnCbKQTeOA27GG4FHrzm+1MwWbRgUdG0IUwhpo3bWR71mFovWxn4GIz17bdxB9zY5yE
-        BcW22XoDAigtdQPhWbU1/clBJbqE61kYmrTUTTx/d/D303AmfwS9eMOgdQwfGHC4rFd6Geas1uKgC6qd
-        MvWWB+OelrpBTlSk8a7AMCDYZ3+pJ4Z9By0ZDgJkSIZPHzIkw6fPQw3V6ZGPRydmlK83hLnG8wunkAyl
-        glPQ6ZriAYaMzXWmk+Hd++l3P+l0TfH1hpzLuWpxJBGK1WLn6dUhd9hcdWQmEYoj1Q+m12ke1ErPqroO
-        Hk1x9vzpGQKJtdKRkY+mG2nKhsXOWUzyyZKy4c8F4wtd6Rp25nSKBknX8GPJ1UmaIz1DGCk65wXTbTRN
-        w2qx+qHgqL1KZknRcGS6pBIbXsOR2XPTchGpGVZnPtUhb/OSKRkWZ+AmjEnZAKkYzvxS7Px6od6egUA6
-        hjOd3y6kxPn6dBqGv490Lkvc/DjR5Q7D+JM/HmlYBEEIR22QRKC/ofB9FhNXPdCwqH8LOpm4VA2BaaiA
-        WG36jxKz8d7yhGcY/cpMcfbygrs2w3tTF65htfp+riBtm2eQDhoAehqqvYM5ESRoqCYTn0qSOTyTQbwP
-        1ZYhMMzlovflXMOK3gHhbatrcAPoBb9iJSq6FJ2u3/SnKNRGJzL8sg49X1HZZmpD1HW4w86hyPemODOj
-        mueff51dOCm9RU61UrX7KQZhbbMv9npxNgc9xn0BuWr18+XZRSlTxznH5BZwPzjy73IMy0CtdsRuh49q
-        VX/23nz+ePnhn4uLAufP3TGG179cARXkSHVtZRzwr87t+5Bx1yk5pftScNRltFn0ksgv0iIIgiAIgiAI
-        giAIgiAIgiAIgiAIgiAIgiAIgiAIgiAI4g4Y+xcx1TlmPxy5RwAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

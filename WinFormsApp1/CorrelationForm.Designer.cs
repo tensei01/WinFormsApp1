@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class Form2
+    partial class CorrelationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,47 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // chart1
-            // 
-            chart1.Location = new Point(588, 7);
-            chart1.Margin = new Padding(2);
-            chart1.Name = "chart1";
-            chart1.Size = new Size(531, 338);
-            chart1.TabIndex = 0;
             // 
             // dataGridView1
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(8, 7);
-            dataGridView1.Margin = new Padding(2);
+            dataGridView1.Location = new Point(11, 58);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridView1.Size = new Size(547, 338);
+            dataGridView1.Size = new Size(1155, 674);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Form2
+            // comboBox1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(12, 12);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(182, 33);
+            comboBox1.TabIndex = 1;
+            comboBox1.SelectedIndexChanged += this.comboBox1_SelectedIndexChanged;
+            // 
+            // CorrelationForm
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1130, 356);
-            Controls.Add(chart1);
+            ClientSize = new Size(1178, 744);
+            Controls.Add(comboBox1);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(4, 3, 4, 3);
-            Name = "Form2";
+            Margin = new Padding(6, 5, 6, 5);
+            Name = "CorrelationForm";
             Text = "Корреляция";
             Load += Form2_Load;
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -76,6 +74,6 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private ComboBox comboBox1;
     }
 }

@@ -3,10 +3,10 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class DataForm : Form
     {
 
-        public Form1()
+        public DataForm()
         {
             InitializeComponent();
 
@@ -33,9 +33,9 @@ namespace WinFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             Console.WriteLine("DrawCorrelationChart started");
-            Form2 form2 = new Form2();
+            CorrelationForm form2 = new CorrelationForm();
             form2.Show();
-            
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -50,8 +50,14 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RegForm regForm = new RegForm();
+            RegressionFormCountry regForm = new RegressionFormCountry();
             regForm.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RegressionWorldForm regressionWorldForm = new RegressionWorldForm();
+            regressionWorldForm.Show();
         }
     }
 }
