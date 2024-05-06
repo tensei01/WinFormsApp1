@@ -11,11 +11,14 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WinFormsApp1
 {
+
     public partial class RegressionWorldForm : Form
     {
+        private Export export;
         public RegressionWorldForm()
         {
             InitializeComponent();
+            export = new Export();
             string[] variableNames = { "ВВП", "Продолжительность жизни", "Уровень безработицы", "Инфляция" };
             foreach (string variable in variableNames) { comboBox2.Items.Add(variable); }
         }
@@ -77,6 +80,11 @@ namespace WinFormsApp1
 
             dataGridView2.DataSource = table;
 
+        }
+
+        private void экспортPdfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            export.ExportChartToPdf(chart1, "RegressionChart");
         }
     }
 }

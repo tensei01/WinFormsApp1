@@ -16,9 +16,11 @@ namespace WinFormsApp1
 {
     public partial class RegressionFormCountry : Form
     {
+        private Export export;
         public RegressionFormCountry()
         {
             InitializeComponent();
+            export = new Export();
             string[] variableNames = { "ВВП", "Продолжительность жизни", "Уровень безработицы", "Инфляция" };
             Regression regression = new Regression();
             List<MorderRow> data = Context._data;
@@ -90,7 +92,7 @@ namespace WinFormsApp1
 
         private void экспортPdfToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            export.ExportChartToPdf(chart1, "RegressionChart");
         }
 
         public void insetIntoTable(List<MorderRow> sortedList, String value) {

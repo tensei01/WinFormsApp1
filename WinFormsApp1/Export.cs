@@ -55,7 +55,8 @@ namespace WinFormsApp1
             {
                 string folderPath = folderBrowserDialog.SelectedPath;
                 string fileName = filenameMain + ".pdf";
-                string fontPath = "C:\\Users\tense\\Source\\Repos\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string fontPath = "C:\\Users\\tense\\source\\repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+
                 PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
                 string filePath = Path.Combine(folderPath, fileName);
@@ -96,31 +97,35 @@ namespace WinFormsApp1
             }
         }
 
-        //public void ExportChartToPdf(Chart chart, string filenameMain)
-        //{
-        //    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-        //    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-        //    {
-        //        string folderPath = folderBrowserDialog.SelectedPath;
-        //        string fileName = filenameMain + ".pdf";
-        //        string filePath = Path.Combine(folderPath, fileName);
+        public void ExportChartToPdf(Chart chart, string filenameMain)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string folderPath = folderBrowserDialog.SelectedPath;
+                string fileName = filenameMain + ".pdf";
+                string filePath = Path.Combine(folderPath, fileName);
+                string fontPath = "C:\\Users\\tense\\source\\repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
-        //        using (PdfWriter writer = new PdfWriter(filePath))
-        //        using (PdfDocument pdf = new PdfDocument(writer))
-        //        using (Document document = new Document(pdf))
-        //        {
-        //            MemoryStream stream = new MemoryStream();
-        //            chart.SaveImage(stream, ChartImageFormat.Png);
-        //            Image image = new Image(stream.ToArray());
+                PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
-        //            Paragraph header = new Paragraph("Регрессия");
-        //            document.Add(header);
-        //            document.Add(new Image(iText.Kernel.Pdf.Xobject.PdfFormXObject.Create(pdf, image)));
-        //        }
+                using (PdfWriter writer = new PdfWriter(filePath))
+                using (PdfDocument pdf = new PdfDocument(writer))
+                using (Document document = new Document(pdf))
+                {
+                    MemoryStream stream = new MemoryStream();
+                    chart.SaveImage(stream, ChartImageFormat.Png);
+                    iText.IO.Image.ImageData imageData = iText.IO.Image.ImageDataFactory.Create(stream.ToArray());
+                    iText.Layout.Element.Image image = new iText.Layout.Element.Image(imageData);
 
-        //        MessageBox.Show("Файл успешно сохранен.");
-        //    }
+                    Paragraph header = new Paragraph("Регрессия");
+                    document.Add(header);
+                    document.Add(image);
+                }
 
-        //}
+                MessageBox.Show("Файл успешно сохранен.");
+            }
+
+        }
     }
 }
