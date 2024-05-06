@@ -89,8 +89,10 @@ namespace WinFormsApp1
 
         private void îÏðîãðàììåToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hello hello = new Hello();
-            hello.Show();
+            //Hello hello = new Hello();
+            //hello.Show();
+            AboutBox1 aboutBox1 = new AboutBox1();
+            aboutBox1.Show();
         }
 
         private void ýêñïîðòÂXLSXToolStripMenuItem_Click(object sender, EventArgs e)

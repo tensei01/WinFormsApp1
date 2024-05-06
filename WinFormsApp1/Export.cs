@@ -18,6 +18,10 @@ using iText.Layout.Element;
 using iText.Layout.Properties;
 using iText.IO.Font.Constants;
 using iText.Kernel.Font;
+using Accord.Statistics.Kernels;
+using MathNet.Numerics.LinearAlgebra;
+using Microsoft.VisualBasic.ApplicationServices;
+using iText.IO.Image;
 
 namespace WinFormsApp1
 {
@@ -51,8 +55,7 @@ namespace WinFormsApp1
             {
                 string folderPath = folderBrowserDialog.SelectedPath;
                 string fileName = filenameMain + ".pdf";
-
-                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string fontPath = "C:\\Users\tense\\Source\\Repos\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
                 PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
                 string filePath = Path.Combine(folderPath, fileName);
@@ -92,5 +95,32 @@ namespace WinFormsApp1
                 MessageBox.Show("Файл успешно сохранен.");
             }
         }
+
+        //public void ExportChartToPdf(Chart chart, string filenameMain)
+        //{
+        //    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+        //    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        string folderPath = folderBrowserDialog.SelectedPath;
+        //        string fileName = filenameMain + ".pdf";
+        //        string filePath = Path.Combine(folderPath, fileName);
+
+        //        using (PdfWriter writer = new PdfWriter(filePath))
+        //        using (PdfDocument pdf = new PdfDocument(writer))
+        //        using (Document document = new Document(pdf))
+        //        {
+        //            MemoryStream stream = new MemoryStream();
+        //            chart.SaveImage(stream, ChartImageFormat.Png);
+        //            Image image = new Image(stream.ToArray());
+
+        //            Paragraph header = new Paragraph("Регрессия");
+        //            document.Add(header);
+        //            document.Add(new Image(iText.Kernel.Pdf.Xobject.PdfFormXObject.Create(pdf, image)));
+        //        }
+
+        //        MessageBox.Show("Файл успешно сохранен.");
+        //    }
+
+        //}
     }
 }
