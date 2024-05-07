@@ -104,5 +104,11 @@ namespace WinFormsApp1
         {
             export.ExportToPDF((DataTable)dataGridView1.DataSource, "data");
         }
+
+        private void fAQToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutFAQForm form = new AboutFAQForm();
+            form.Show();
+        }
     }
 }

@@ -86,5 +86,11 @@ namespace WinFormsApp1
         {
             export.ExportChartToPdf(chart1, "RegressionChart");
         }
+
+        private void формулыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutRegressionForm1 form  = new AboutRegressionForm1();
+            form.Show();
+        }
     }
 }

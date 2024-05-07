@@ -42,6 +42,7 @@
             экспортPdfToolStripMenuItem = new ToolStripMenuItem();
             экспортXLSXToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
+            формулыToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             menuStrip1.SuspendLayout();
@@ -50,7 +51,7 @@
             // button1
             // 
             button1.Location = new Point(141, 44);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(78, 20);
             button1.TabIndex = 6;
@@ -62,7 +63,7 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(8, 44);
-            comboBox2.Margin = new Padding(2, 2, 2, 2);
+            comboBox2.Margin = new Padding(2);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(129, 23);
             comboBox2.TabIndex = 5;
@@ -74,7 +75,7 @@
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
             chart1.Location = new Point(8, 71);
-            chart1.Margin = new Padding(2, 2, 2, 2);
+            chart1.Margin = new Padding(2);
             chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -98,7 +99,7 @@
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(8, 443);
-            dataGridView2.Margin = new Padding(2, 2, 2, 2);
+            dataGridView2.Margin = new Padding(2);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 62;
             dataGridView2.Size = new Size(605, 82);
@@ -135,21 +136,29 @@
             // экспортPdfToolStripMenuItem
             // 
             экспортPdfToolStripMenuItem.Name = "экспортPdfToolStripMenuItem";
-            экспортPdfToolStripMenuItem.Size = new Size(180, 22);
+            экспортPdfToolStripMenuItem.Size = new Size(148, 22);
             экспортPdfToolStripMenuItem.Text = "Экспорт PDF";
             экспортPdfToolStripMenuItem.Click += экспортPdfToolStripMenuItem_Click;
             // 
             // экспортXLSXToolStripMenuItem
             // 
             экспортXLSXToolStripMenuItem.Name = "экспортXLSXToolStripMenuItem";
-            экспортXLSXToolStripMenuItem.Size = new Size(180, 22);
+            экспортXLSXToolStripMenuItem.Size = new Size(148, 22);
             экспортXLSXToolStripMenuItem.Text = "Экспорт XLSX";
             // 
             // оПрограммеToolStripMenuItem
             // 
+            оПрограммеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { формулыToolStripMenuItem });
             оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            оПрограммеToolStripMenuItem.Size = new Size(94, 22);
-            оПрограммеToolStripMenuItem.Text = "О программе";
+            оПрограммеToolStripMenuItem.Size = new Size(65, 22);
+            оПрограммеToolStripMenuItem.Text = "Справка";
+            // 
+            // формулыToolStripMenuItem
+            // 
+            формулыToolStripMenuItem.Name = "формулыToolStripMenuItem";
+            формулыToolStripMenuItem.Size = new Size(180, 22);
+            формулыToolStripMenuItem.Text = "Формулы";
+            формулыToolStripMenuItem.Click += формулыToolStripMenuItem_Click;
             // 
             // RegressionWorldForm
             // 
@@ -164,7 +173,7 @@
             Controls.Add(comboBox2);
             Controls.Add(chart1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "RegressionWorldForm";
             Text = "Мировая регрессия";
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
@@ -188,5 +197,6 @@
         private ToolStripMenuItem экспортPdfToolStripMenuItem;
         private ToolStripMenuItem экспортXLSXToolStripMenuItem;
         private ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private ToolStripMenuItem формулыToolStripMenuItem;
     }
 }

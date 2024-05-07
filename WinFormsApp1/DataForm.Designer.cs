@@ -41,6 +41,7 @@
             мироваяРегрессияToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             openFileDialog1 = new OpenFileDialog();
+            fAQToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -58,8 +59,9 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.MenuBar;
             menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { фвйлToolStripMenuItem, корреляцияToolStripMenuItem, регрессияToolStripMenuItem, оПрограммеToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { фвйлToolStripMenuItem, корреляцияToolStripMenuItem, регрессияToolStripMenuItem, оПрограммеToolStripMenuItem, fAQToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(788, 24);
@@ -69,70 +71,74 @@
             // фвйлToolStripMenuItem
             // 
             фвйлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортToolStripMenuItem, открытьToolStripMenuItem });
+            фвйлToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             фвйлToolStripMenuItem.Name = "фвйлToolStripMenuItem";
-            фвйлToolStripMenuItem.Size = new Size(48, 20);
+            фвйлToolStripMenuItem.Size = new Size(50, 20);
             фвйлToolStripMenuItem.Text = "Файл";
             // 
             // экспортToolStripMenuItem
             // 
             экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВPDFToolStripMenuItem, экспортВXLSXToolStripMenuItem });
             экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
-            экспортToolStripMenuItem.Size = new Size(121, 22);
+            экспортToolStripMenuItem.Size = new Size(124, 22);
             экспортToolStripMenuItem.Text = "Экспорт";
             // 
             // экспортВPDFToolStripMenuItem
             // 
             экспортВPDFToolStripMenuItem.Name = "экспортВPDFToolStripMenuItem";
-            экспортВPDFToolStripMenuItem.Size = new Size(157, 22);
+            экспортВPDFToolStripMenuItem.Size = new Size(162, 22);
             экспортВPDFToolStripMenuItem.Text = "Экспорт в PDF";
             экспортВPDFToolStripMenuItem.Click += экспортВPDFToolStripMenuItem_Click;
             // 
             // экспортВXLSXToolStripMenuItem
             // 
             экспортВXLSXToolStripMenuItem.Name = "экспортВXLSXToolStripMenuItem";
-            экспортВXLSXToolStripMenuItem.Size = new Size(157, 22);
+            экспортВXLSXToolStripMenuItem.Size = new Size(162, 22);
             экспортВXLSXToolStripMenuItem.Text = "Экспорт в XLSX";
             экспортВXLSXToolStripMenuItem.Click += экспортВXLSXToolStripMenuItem_Click;
             // 
             // открытьToolStripMenuItem
             // 
             открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.Size = new Size(121, 22);
+            открытьToolStripMenuItem.Size = new Size(124, 22);
             открытьToolStripMenuItem.Text = "Открыть";
             открытьToolStripMenuItem.Click += открытьToolStripMenuItem_Click;
             // 
             // корреляцияToolStripMenuItem
             // 
+            корреляцияToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             корреляцияToolStripMenuItem.Name = "корреляцияToolStripMenuItem";
-            корреляцияToolStripMenuItem.Size = new Size(86, 20);
+            корреляцияToolStripMenuItem.Size = new Size(92, 20);
             корреляцияToolStripMenuItem.Text = "Корреляция";
             корреляцияToolStripMenuItem.Click += корреляцияToolStripMenuItem_Click;
             // 
             // регрессияToolStripMenuItem
             // 
             регрессияToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { регрессияПоСтранамToolStripMenuItem, мироваяРегрессияToolStripMenuItem });
+            регрессияToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             регрессияToolStripMenuItem.Name = "регрессияToolStripMenuItem";
-            регрессияToolStripMenuItem.Size = new Size(75, 20);
+            регрессияToolStripMenuItem.Size = new Size(79, 20);
             регрессияToolStripMenuItem.Text = "Регрессия";
             // 
             // регрессияПоСтранамToolStripMenuItem
             // 
             регрессияПоСтранамToolStripMenuItem.Name = "регрессияПоСтранамToolStripMenuItem";
-            регрессияПоСтранамToolStripMenuItem.Size = new Size(196, 22);
+            регрессияПоСтранамToolStripMenuItem.Size = new Size(200, 22);
             регрессияПоСтранамToolStripMenuItem.Text = "Регрессия по странам";
             регрессияПоСтранамToolStripMenuItem.Click += регрессияПоСтранамToolStripMenuItem_Click;
             // 
             // мироваяРегрессияToolStripMenuItem
             // 
             мироваяРегрессияToolStripMenuItem.Name = "мироваяРегрессияToolStripMenuItem";
-            мироваяРегрессияToolStripMenuItem.Size = new Size(196, 22);
+            мироваяРегрессияToolStripMenuItem.Size = new Size(200, 22);
             мироваяРегрессияToolStripMenuItem.Text = "Мировая регрессия";
             мироваяРегрессияToolStripMenuItem.Click += мироваяРегрессияToolStripMenuItem_Click;
             // 
             // оПрограммеToolStripMenuItem
             // 
+            оПрограммеToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            оПрограммеToolStripMenuItem.Size = new Size(94, 20);
+            оПрограммеToolStripMenuItem.Size = new Size(95, 20);
             оПрограммеToolStripMenuItem.Text = "О программе";
             оПрограммеToolStripMenuItem.Click += оПрограммеToolStripMenuItem_Click;
             // 
@@ -140,10 +146,19 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // fAQToolStripMenuItem
+            // 
+            fAQToolStripMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
+            fAQToolStripMenuItem.Size = new Size(41, 20);
+            fAQToolStripMenuItem.Text = "FAQ";
+            fAQToolStripMenuItem.Click += fAQToolStripMenuItem_Click;
+            // 
             // DataForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ScrollBar;
             ClientSize = new Size(788, 752);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
@@ -174,5 +189,6 @@
         private ToolStripMenuItem мироваяРегрессияToolStripMenuItem;
         private ToolStripMenuItem оПрограммеToolStripMenuItem;
         private OpenFileDialog openFileDialog1;
+        private ToolStripMenuItem fAQToolStripMenuItem;
     }
 }

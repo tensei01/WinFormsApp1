@@ -30,15 +30,7 @@ namespace WinFormsApp1
         }
 
 
-        private void RegForm_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -95,7 +87,8 @@ namespace WinFormsApp1
             export.ExportChartToPdf(chart1, "RegressionChart");
         }
 
-        public void insetIntoTable(List<MorderRow> sortedList, String value) {
+        public void insetIntoTable(List<MorderRow> sortedList, String value)
+        {
             DataTable table = new DataTable();
             table.Columns.Add("Критерий Фишера", typeof(double));
             table.Columns.Add("P-критерий", typeof(double));
@@ -105,6 +98,12 @@ namespace WinFormsApp1
 
             dataGridView2.DataSource = table;
 
+        }
+
+        private void формулыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutRegressionForm1 form = new AboutRegressionForm1(); 
+            form.Show();
         }
     }
 }

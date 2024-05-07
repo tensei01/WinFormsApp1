@@ -74,15 +74,6 @@ namespace WinFormsApp1
             this.dataGridView1.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.dataGridView1_CellToolTipTextNeeded);
         }
 
-        private void textBoxResult_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -161,11 +152,6 @@ namespace WinFormsApp1
             }
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void экспортВXLSXToolStripMenuItem_Click(object sender, EventArgs e)
         {
             export.ExportToExcel((DataTable)dataGridView1.DataSource, "correlation");
@@ -174,6 +160,18 @@ namespace WinFormsApp1
         private void экспортВPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             export.ExportToPDF((DataTable)dataGridView1.DataSource, "correlation");
+        }
+
+        private void формулаПирсонаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutCorrelationForm aboutCorrelationForm = new AboutCorrelationForm();
+            aboutCorrelationForm.Show();
+        }
+
+        private void допИнформацияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutCorrelationForm1 aboutCorrelationForm = new AboutCorrelationForm1();
+            aboutCorrelationForm.Show();
         }
     }
 }
