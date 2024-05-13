@@ -72,10 +72,13 @@ namespace WinFormsApp1
         public void insetIntoTable(List<MorderRow> sortedList, String value)
         {
             DataTable table = new DataTable();
-            table.Columns.Add("Критерий Фишера", typeof(double));
-            table.Columns.Add("P-критерий", typeof(double));
+            table.Columns.Add("Фрасчёт", typeof(double));
+            table.Columns.Add("Фтабл", typeof(double));
 
             (double fStatistic, double pValue) = Regression.CalculateFisherFStatistic(sortedList, value);
+
+            label4.Text = "Вывод: " + (fStatistic > pValue ? "Критерй Фишера расчётный больше табличного, поэтому регрессия адекватна." : "Критерй Фишера расчётный меньше табличного, поэтому регрессиям не адекватна.");
+
             table.Rows.Add(Math.Round(fStatistic, 3), Math.Round(pValue, 3));
 
             dataGridView2.DataSource = table;

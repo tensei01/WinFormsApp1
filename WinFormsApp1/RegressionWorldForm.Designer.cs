@@ -43,6 +43,7 @@
             экспортXLSXToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             формулыToolStripMenuItem = new ToolStripMenuItem();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             menuStrip1.SuspendLayout();
@@ -50,10 +51,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(141, 44);
-            button1.Margin = new Padding(2);
+            button1.Location = new Point(201, 73);
             button1.Name = "button1";
-            button1.Size = new Size(78, 20);
+            button1.Size = new Size(111, 33);
             button1.TabIndex = 6;
             button1.Text = "Расчитать";
             button1.UseVisualStyleBackColor = true;
@@ -62,10 +62,9 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(8, 44);
-            comboBox2.Margin = new Padding(2);
+            comboBox2.Location = new Point(11, 73);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(129, 23);
+            comboBox2.Size = new Size(183, 33);
             comboBox2.TabIndex = 5;
             // 
             // chart1
@@ -74,44 +73,40 @@
             chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new Point(8, 71);
-            chart1.Margin = new Padding(2);
+            chart1.Location = new Point(11, 118);
             chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart1.Series.Add(series1);
-            chart1.Size = new Size(605, 343);
+            chart1.Size = new Size(864, 572);
             chart1.TabIndex = 4;
             chart1.Text = "chart1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(8, 24);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(11, 40);
             label2.Name = "label2";
-            label2.Size = new Size(36, 15);
+            label2.Size = new Size(54, 25);
             label2.TabIndex = 7;
             label2.Text = "Поле";
             // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(8, 443);
-            dataGridView2.Margin = new Padding(2);
+            dataGridView2.Location = new Point(11, 738);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(605, 82);
+            dataGridView2.Size = new Size(864, 137);
             dataGridView2.TabIndex = 9;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(8, 426);
-            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Location = new Point(11, 710);
             label3.Name = "label3";
-            label3.Size = new Size(121, 15);
+            label3.Size = new Size(183, 25);
             label3.TabIndex = 8;
             label3.Text = "Проверка регрессии";
             // 
@@ -121,8 +116,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { экспортToolStripMenuItem, оПрограммеToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(629, 24);
+            menuStrip1.Size = new Size(899, 33);
             menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -130,41 +124,50 @@
             // 
             экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортPdfToolStripMenuItem, экспортXLSXToolStripMenuItem });
             экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
-            экспортToolStripMenuItem.Size = new Size(64, 22);
+            экспортToolStripMenuItem.Size = new Size(95, 29);
             экспортToolStripMenuItem.Text = "Экспорт";
             // 
             // экспортPdfToolStripMenuItem
             // 
             экспортPdfToolStripMenuItem.Name = "экспортPdfToolStripMenuItem";
-            экспортPdfToolStripMenuItem.Size = new Size(148, 22);
+            экспортPdfToolStripMenuItem.Size = new Size(226, 34);
             экспортPdfToolStripMenuItem.Text = "Экспорт PDF";
             экспортPdfToolStripMenuItem.Click += экспортPdfToolStripMenuItem_Click;
             // 
             // экспортXLSXToolStripMenuItem
             // 
             экспортXLSXToolStripMenuItem.Name = "экспортXLSXToolStripMenuItem";
-            экспортXLSXToolStripMenuItem.Size = new Size(148, 22);
+            экспортXLSXToolStripMenuItem.Size = new Size(226, 34);
             экспортXLSXToolStripMenuItem.Text = "Экспорт XLSX";
             // 
             // оПрограммеToolStripMenuItem
             // 
             оПрограммеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { формулыToolStripMenuItem });
             оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            оПрограммеToolStripMenuItem.Size = new Size(65, 22);
+            оПрограммеToolStripMenuItem.Size = new Size(97, 29);
             оПрограммеToolStripMenuItem.Text = "Справка";
             // 
             // формулыToolStripMenuItem
             // 
             формулыToolStripMenuItem.Name = "формулыToolStripMenuItem";
-            формулыToolStripMenuItem.Size = new Size(180, 22);
+            формулыToolStripMenuItem.Size = new Size(193, 34);
             формулыToolStripMenuItem.Text = "Формулы";
             формулыToolStripMenuItem.Click += формулыToolStripMenuItem_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 894);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 25);
+            label4.TabIndex = 11;
+            // 
             // RegressionWorldForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(629, 536);
+            ClientSize = new Size(899, 945);
+            Controls.Add(label4);
             Controls.Add(menuStrip1);
             Controls.Add(dataGridView2);
             Controls.Add(label3);
@@ -173,7 +176,6 @@
             Controls.Add(comboBox2);
             Controls.Add(chart1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2);
             Name = "RegressionWorldForm";
             Text = "Мировая регрессия";
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
@@ -198,5 +200,6 @@
         private ToolStripMenuItem экспортXLSXToolStripMenuItem;
         private ToolStripMenuItem оПрограммеToolStripMenuItem;
         private ToolStripMenuItem формулыToolStripMenuItem;
+        private Label label4;
     }
 }

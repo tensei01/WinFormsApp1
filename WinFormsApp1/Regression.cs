@@ -53,22 +53,26 @@ namespace WinFormsApp1
         {
             double[] x = getValues(filteredData, text);
             double[] y = Array.ConvertAll(filteredData.Select(data => data.MortalityRate).ToArray(), ys => (double) ys);
+            double[] yPredicate = new double[y.Length];
             double[] coefficients = PolynomialRegression(x, y);
             double sse = 0;
             double sst = 0;
-            double meanY = y.Average();
 
             for (int i = 0; i < y.Length; i++)
             {
-                double predicted = coefficients[0] + coefficients[1] * x[i] + coefficients[2] * Math.Pow(x[i], 2);
-                double residual = y[i] - predicted;
-                sse += residual * residual;
-                sst += (y[i] - meanY) * (y[i] - meanY);
+                yPredicate[i] = coefficients[0] + coefficients[1] * x[i] + coefficients[2] * Math.Pow(x[i], 2);
             }
 
-            double mse = sse / (y.Length - 3);
-            double fStatistic = (sst - sse) / mse / 2;
-            double pValue = FisherSnedecor.CDF(2, y.Length - 3, fStatistic);
+            double avgY = yPredicate.Average();
+
+            for (int i = 0; i < y.Length; i++)
+            {
+                sse += (y[i] - yPredicate[i]) * (y[i] - yPredicate[i]);
+                sst += (yPredicate[i] - avgY) * (yPredicate[i] - avgY);
+            }
+
+            double fStatistic = (sst/2) * ((y.Length - 3)/sse);
+            double pValue = FisherSnedecor.InvCDF(2, y.Length - 3, 0.95);
 
             return (fStatistic, pValue);
         }
