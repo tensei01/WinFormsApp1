@@ -77,7 +77,7 @@ namespace WinFormsApp1
             return (fStatistic, pValue);
         }
 
-        private static double[] getValues(List<MorderRow> filteredData, String text) {
+        public static double[] getValues(List<MorderRow> filteredData, String text) {
             double[] variableValues;
 
             switch (text)

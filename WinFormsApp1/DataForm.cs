@@ -89,8 +89,6 @@ namespace WinFormsApp1
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Hello hello = new Hello();
-            //hello.Show();
             AboutBox1 aboutBox1 = new AboutBox1();
             aboutBox1.Show();
         }
@@ -109,6 +107,17 @@ namespace WinFormsApp1
         {
             AboutFAQForm form = new AboutFAQForm();
             form.Show();
+        }
+
+        private void прогназированиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Context._worldData == null)
+            {
+                MessageBox.Show("Загрузите данные");
+                return;
+            }
+            PrognozForm prognozForm = new PrognozForm();
+            prognozForm.Show();
         }
     }
 }

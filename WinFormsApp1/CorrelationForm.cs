@@ -18,6 +18,8 @@ using iText.Layout.Element;
 using iText.Layout.Properties;
 using iText.IO.Font.Constants;
 using iText.Kernel.Font;
+using MathNet.Numerics.Distributions;
+using Accord.Statistics.Testing;
 
 namespace WinFormsApp1
 {
@@ -172,6 +174,36 @@ namespace WinFormsApp1
         {
             AboutCorrelationForm1 aboutCorrelationForm = new AboutCorrelationForm1();
             aboutCorrelationForm.Show();
+        }
+
+        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 1)
+            {
+                double r = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+
+                int n = Context._data.Count;
+                double t = r * Math.Sqrt((n - 2) / (1 - r * r));
+                double df = n - 2;
+                double p = 1.96;
+
+                string message = $"Коэффициент корреляции: {r:F2}\n" +
+                                 $"t-статистика: {t:F2}\n" +
+                                 $"Степени свободы: {df}\n" +
+                                 $"p-значение: {p:F2}";
+
+                if (Math.Abs(t) > p)
+                {
+                    message += "\nКоэффициент корреляции статистически значим";
+                }
+                else
+                {
+                    message += "\nКоэффициент корреляции не статистически значим";
+                }
+
+                MessageBox.Show(message, "Статистическая значимость", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
