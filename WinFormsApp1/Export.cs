@@ -22,11 +22,18 @@ using Accord.Statistics.Kernels;
 using MathNet.Numerics.LinearAlgebra;
 using Microsoft.VisualBasic.ApplicationServices;
 using iText.IO.Image;
+using System.Diagnostics.Metrics;
+using iText.IO.Font;
+using iText.Layout.Borders;
+using MathNet.Numerics.Distributions;
+using iText.Kernel.Colors;
+
 
 namespace WinFormsApp1
 {
     public class Export
     {
+        private int count = 1;
         public void ExportToExcel(DataTable table, String filenameMain)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
@@ -55,7 +62,7 @@ namespace WinFormsApp1
             {
                 string folderPath = folderBrowserDialog.SelectedPath;
                 string fileName = filenameMain + ".pdf";
-                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
                 PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
@@ -97,18 +104,18 @@ namespace WinFormsApp1
             }
         }
 
-        public void ExportChartToPdf(Chart chart, string filenameMain)
+        public void ExportChartToPdf(Chart chart, string filenameMain, string country, string variable, string fisherTest, double fStatistic, double pValue)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 string folderPath = folderBrowserDialog.SelectedPath;
-                string fileName = filenameMain + ".pdf";
+                string fileName = filenameMain + "_" + count + ".pdf";
                 string filePath = Path.Combine(folderPath, fileName);
-                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
-                PdfFont font = PdfFontFactory.CreateFont(fontPath);
+                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
+                PdfFont font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
                 using (PdfWriter writer = new PdfWriter(filePath))
                 using (PdfDocument pdf = new PdfDocument(writer))
                 using (Document document = new Document(pdf))
@@ -118,14 +125,40 @@ namespace WinFormsApp1
                     iText.IO.Image.ImageData imageData = iText.IO.Image.ImageDataFactory.Create(stream.ToArray());
                     iText.Layout.Element.Image image = new iText.Layout.Element.Image(imageData);
 
-                    Paragraph header = new Paragraph("Регрессия");
+                    Paragraph header = new Paragraph("Полиномиальная регрессия").SetFont(font);
                     document.Add(header);
+                    Paragraph countryParagraph = new Paragraph("Страна: " + country).SetFont(font);
+                    document.Add(countryParagraph);
+
+                    Paragraph variableParagraph = new Paragraph("Выбранное поле: " + variable).SetFont(font);
+                    document.Add(variableParagraph);
+
                     document.Add(image);
+
+                    // Добавляем ячейки в таблицу с границами
+                    Table table = new Table(UnitValue.CreatePercentArray(new float[] { 50, 50 }));
+                    table.SetWidth(UnitValue.CreatePercentValue(100));
+
+                    // Добавляем заголовок таблицы
+                    table.AddHeaderCell(new Cell().Add(new Paragraph("Критерий Фишера").SetFont(font)).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+
+                    // Добавляем ячейки в таблицу с границами
+                    table.AddCell(new Cell().Add(new Paragraph("Фрасчетное").SetFont(font)).SetBorder(new SolidBorder(1)));
+                    table.AddCell(new Cell().Add(new Paragraph(fStatistic.ToString()).SetFont(font)).SetBorder(new SolidBorder(1)));
+
+                    table.AddCell(new Cell().Add(new Paragraph("Фтабличное").SetFont(font)).SetBorder(new SolidBorder(1)));
+                    table.AddCell(new Cell().Add(new Paragraph(pValue.ToString()).SetFont(font)).SetBorder(new SolidBorder(1)));
+
+                    table.AddCell(new Cell().Add(new Paragraph("").SetFont(font)).SetBorder(new SolidBorder(1)));
+                    table.AddCell(new Cell().Add(new Paragraph(fisherTest).SetFont(font)).SetBorder(new SolidBorder(1)));
+
+                    document.Add(table);
+
                 }
+                count++;
 
                 MessageBox.Show("Файл успешно сохранен.");
             }
-
         }
     }
 }
