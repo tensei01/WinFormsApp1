@@ -55,7 +55,7 @@ namespace WinFormsApp1
             }
         }
 
-        public void ExportToPDF(DataTable dataTable, String filenameMain)
+        public void ExportToPDF(DataTable dataTable, String filenameMain, String description)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
@@ -72,6 +72,10 @@ namespace WinFormsApp1
                 using (PdfDocument pdf = new PdfDocument(writer))
                 using (Document document = new Document(pdf))
                 {
+                    Paragraph header = new Paragraph("Корреляция").SetFont(font).SetFontSize(20);
+                    document.Add(header);
+                    Paragraph descriptionParagraph = new Paragraph(description).SetFont(font).SetFontSize(14);
+                    document.Add(descriptionParagraph);
 
                     float[] columnWidths = new float[dataTable.Columns.Count];
                     for (int i = 0; i < dataTable.Columns.Count; i++)
@@ -95,9 +99,11 @@ namespace WinFormsApp1
                         }
                     }
 
-                    Paragraph header = new Paragraph("Корреляция");
-                    document.Add(header);
+                    
                     document.Add(table);
+
+                    Paragraph chartDescription = new Paragraph("График показывает зависимость нескольких величин по годам. На графике представлены данные по ВВП, продолжительности жизни, уровню безработицы, инфляции и смертности в России с 2022 по 2024 год").SetFont(font).SetFontSize(14);
+                    document.Add(chartDescription);
                 }
 
                 MessageBox.Show("Файл успешно сохранен.");

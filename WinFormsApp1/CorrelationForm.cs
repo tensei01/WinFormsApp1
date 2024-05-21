@@ -161,7 +161,8 @@ namespace WinFormsApp1
 
         private void экспортВPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            export.ExportToPDF((DataTable)dataGridView1.DataSource, "correlation");
+            string description = "Для подсчета корреляции между смертностью и годом используется коэффициент корреляции Пирсона. Этот коэффициент показывает, насколько сильно две переменные связаны между собой. Значение коэффициента корреляции Пирсона всегда находится в диапазоне от -1 до 1. Если значение равно 1, то это означает, что между переменными существует прямая зависимость: при увеличении одной переменной увеличивается и другая. Если значение равно -1, то это означает, что между переменными существует обратная зависимость: при увеличении одной переменной уменьшается другая. Если значение равно 0, то это означает, что между переменными нет никакой зависимости.";
+            export.ExportToPDF((DataTable)dataGridView1.DataSource, "correlation", description);
         }
 
         private void формулаПирсонаToolStripMenuItem_Click(object sender, EventArgs e)
