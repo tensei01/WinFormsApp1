@@ -62,7 +62,7 @@ namespace WinFormsApp1
             {
                 string folderPath = folderBrowserDialog.SelectedPath;
                 string fileName = filenameMain + ".pdf";
-                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
                 PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
@@ -119,7 +119,7 @@ namespace WinFormsApp1
                 string fileName = filenameMain + "_" + count + ".pdf";
                 string filePath = Path.Combine(folderPath, fileName);
 
-                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
                 PdfFont font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
                 using (PdfWriter writer = new PdfWriter(filePath))

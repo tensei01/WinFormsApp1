@@ -28,7 +28,7 @@ namespace WinFormsApp1
             LifeExpectancy = (int) g.Average(m => m.LifeExpectancy),
             UnemploymentRate = g.Average(m => m.UnemploymentRate),
             InflationRate = g.Average(m => m.InflationRate),
-            MortalityRate = g.Sum(m => m.MortalityRate)
+            MortalityRate = (int)g.Average(m => m.MortalityRate)
         }).OrderBy(m => m.Year)
         .ToList();
         }
