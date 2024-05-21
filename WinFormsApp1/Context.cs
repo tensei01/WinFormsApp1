@@ -21,7 +21,7 @@ namespace WinFormsApp1
             _worldData = data
                 .GroupBy(m => m.Year)
                 .Select(g => new MorderRow
-        {
+                {
             Year = g.Key,
             Country = "World",
             Gdp = g.Average(m => m.Gdp),

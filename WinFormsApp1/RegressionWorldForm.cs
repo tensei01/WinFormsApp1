@@ -15,6 +15,8 @@ namespace WinFormsApp1
     public partial class RegressionWorldForm : Form
     {
         private Export export;
+        public double FStatistic { get; private set; }
+        public double PValue { get; private set; }
         public RegressionWorldForm()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace WinFormsApp1
 
             DrawRegressionChart(Context._worldData, Regression.calculateRegression(Context._worldData, variable));
             insetIntoTable(Context._worldData, variable);
+
         }
 
         private void DrawRegressionChart(List<MorderRow> sortedList, double[] predictedValues)
@@ -75,11 +78,11 @@ namespace WinFormsApp1
             table.Columns.Add("Фрасчёт", typeof(double));
             table.Columns.Add("Фтабл", typeof(double));
 
-            (double fStatistic, double pValue) = Regression.CalculateFisherFStatistic(sortedList, value);
+            (FStatistic,PValue) = Regression.CalculateFisherFStatistic(sortedList, value);
 
-            label4.Text = "Вывод: " + (fStatistic > pValue ? "Критерй Фишера расчётный больше табличного, поэтому регрессия адекватна." : "Критерй Фишера расчётный меньше табличного, поэтому регрессиям не адекватна.");
+            label4.Text = "Вывод: " + (FStatistic > PValue ? "Критерй Фишера расчётный больше табличного, поэтому регрессия адекватна." : "Критерй Фишера расчётный меньше табличного, поэтому регрессиям не адекватна.");
 
-            table.Rows.Add(Math.Round(fStatistic, 3), Math.Round(pValue, 3));
+            table.Rows.Add(Math.Round(FStatistic, 3), Math.Round(PValue, 3));
 
             dataGridView2.DataSource = table;
 
@@ -87,7 +90,12 @@ namespace WinFormsApp1
 
         private void экспортPdfToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            export.ExportChartToPdf(chart1, "RegressionChart");
+
+            string variable = comboBox2.Text;
+            string fisherTest = label4.Text;
+            double fStatistic = FStatistic;
+            double pValue = PValue;
+            export.ExportChartToPdf(chart1, "RegressionChart", "Все страны", variable, fisherTest, fStatistic, pValue);
         }
 
         private void формулыToolStripMenuItem_Click(object sender, EventArgs e)

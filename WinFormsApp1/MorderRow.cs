@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WinFormsApp1
 {
     public class MorderRow
-    {   
+    {
         public string Country { get; set; }
         public int Year { get; set; }
         public double Gdp { get; set; }

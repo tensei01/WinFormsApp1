@@ -100,7 +100,8 @@ namespace WinFormsApp1
 
         private void экспортВPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            export.ExportToPDF((DataTable)dataGridView1.DataSource, "data");
+            string description = "Описание алгоритмов, используемых для подсчета корреляции, и пояснения к графику.";
+            export.ExportToPDF((DataTable)dataGridView1.DataSource, "data", description);
         }
 
         private void fAQToolStripMenuItem_Click(object sender, EventArgs e)

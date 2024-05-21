@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathNet.Numerics.Statistics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace WinFormsApp1
 {
     public partial class RegressionFormCountry : Form
     {
+        public double FStatistic { get; private set; }
+        public double PValue { get; private set; }
         private Export export;
         public RegressionFormCountry()
         {
@@ -82,10 +85,7 @@ namespace WinFormsApp1
             }
         }
 
-        private void экспортPdfToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            export.ExportChartToPdf(chart1, "RegressionChart");
-        }
+        
 
         public void insetIntoTable(List<MorderRow> sortedList, String value)
         {
@@ -93,11 +93,11 @@ namespace WinFormsApp1
             table.Columns.Add("Фрасчёт", typeof(double));
             table.Columns.Add("Фтабл", typeof(double));
 
-            (double fStatistic, double pValue) = Regression.CalculateFisherFStatistic(sortedList, value);
+            (FStatistic, PValue) = Regression.CalculateFisherFStatistic(sortedList, value);
 
-            label4.Text = "Вывод: " + (fStatistic > pValue ? "Критерй Фишера расчётный больше табличного, поэтому регрессия адекватна." : "Критерй Фишера расчётный меньше табличного, поэтому регрессиям не адекватна.");
+            label4.Text = "Вывод: " + (FStatistic > PValue ? "Критерий Фишера расчётный больше табличного, поэтому регрессия адекватна." : "Критерий Фишера расчётный меньше табличного, поэтому регрессиям не адекватна.");
 
-            table.Rows.Add(Math.Round(fStatistic, 3), Math.Round(pValue, 3));
+            table.Rows.Add(Math.Round(FStatistic, 3), Math.Round(PValue, 3));
 
             dataGridView2.DataSource = table;
 
@@ -107,6 +107,17 @@ namespace WinFormsApp1
         {
             AboutRegressionForm1 form = new AboutRegressionForm1(); 
             form.Show();
+        }
+        private void экспортPdfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string country = comboBox1.Text;
+            string variable = comboBox2.Text;
+            string fisherTest = label4.Text;
+            double fStatistic = FStatistic;
+            double pValue = PValue;
+           
+
+            export.ExportChartToPdf(chart1, "RegressionChart", country, variable, fisherTest, fStatistic, pValue);
         }
     }
 }
