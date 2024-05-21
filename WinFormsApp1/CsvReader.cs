@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,48 +22,55 @@ namespace WinFormsApp1
 
                 while (!csvParser.EndOfData)
                 {
-                    string[] fields = csvParser.ReadFields();
-
-                    if (fields.Length < 6 || fields.Length > 7)
+                    try
                     {
-                        continue;
-                    }
+                        string[] fields = csvParser.ReadFields();
 
-                    string country = fields[0];
-                    double gdp, lifeExpectancy, inflation, unemploymentRate, mortalityRate = 0.0;
-                    int year;
+                        if (fields.Length < 6 || fields.Length > 7)
+                        {
+                            continue;
+                        }
 
-                    if (!int.TryParse(fields[1], out year) ||
-                        !double.TryParse(fields[2], out gdp) ||
-                        !double.TryParse(fields[3], out lifeExpectancy) ||
-                        !double.TryParse(fields[4], out inflation) ||
-                        !double.TryParse(fields[5], out unemploymentRate))
+                        string country = fields[0];
+                        double gdp, lifeExpectancy, inflation, unemploymentRate, mortalityRate = 0.0;
+                        int year;
+
+                        if (!int.TryParse(fields[1], out year) ||
+                            !double.TryParse(fields[5], NumberStyles.Any, CultureInfo.InvariantCulture, out gdp) ||
+                            !double.TryParse(fields[4], NumberStyles.Any, CultureInfo.InvariantCulture, out lifeExpectancy) ||
+                            !double.TryParse(fields[3], NumberStyles.Any, CultureInfo.InvariantCulture, out inflation) ||
+                            !double.TryParse(fields[2], NumberStyles.Any, CultureInfo.InvariantCulture, out unemploymentRate))
+                        {
+                            continue;
+                        }
+
+                        if (fields.Length == 6 & !double.TryParse(fields[6], NumberStyles.Any, CultureInfo.InvariantCulture, out mortalityRate))
+                        {
+                            continue;
+                        }
+
+                        if (year < 0 || mortalityRate < 0 || gdp < 0 || lifeExpectancy < 0 || lifeExpectancy > 120 || unemploymentRate > 100 || unemploymentRate < 0)
+                        {
+                            MessageBox.Show("Ошибка в данных - " + country + " - " + year);
+                            throw new Exception("Ошибка чтения из файла");
+                        }
+
+                        MorderRow row = new MorderRow
+                        {
+                            Country = country,
+                            Year = year,
+                            Gdp = gdp,
+                            LifeExpectancy = (int)lifeExpectancy,
+                            UnemploymentRate = unemploymentRate,
+                            InflationRate = inflation,
+                            MortalityRate = (int)mortalityRate
+                        };
+
+                        result.Add(row);
+                    } catch (Exception ex)
                     {
-                        continue;
+                        Console.WriteLine(ex.ToString());
                     }
-
-                    if (fields.Length == 6 & !double.TryParse(fields[6], out mortalityRate))
-                    {
-                        continue;
-                    }
-
-                    if(inflation < 0 || year < 0 || mortalityRate < 0 || gdp < 0 || lifeExpectancy < 0 || lifeExpectancy > 120 || unemploymentRate > 100 || unemploymentRate < 0) {
-                        MessageBox.Show("Ошибка в данных - " + country + " - " + year);
-                        throw new Exception("Ошибка чтения из файла");
-                    }
-
-                    MorderRow row = new MorderRow
-                    {
-                        Country = country,
-                        Year = year,
-                        Gdp = gdp,
-                        LifeExpectancy = (int)lifeExpectancy,
-                        UnemploymentRate = unemploymentRate,
-                        InflationRate = inflation,
-                        MortalityRate = (int)mortalityRate
-                    };
-
-                    result.Add(row);
                 }
             }
 

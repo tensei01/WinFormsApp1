@@ -24,12 +24,12 @@ namespace WinFormsApp1
         {
             Year = g.Key,
             Country = "World",
-            Gdp = g.Sum(m => m.Gdp),
+            Gdp = g.Average(m => m.Gdp),
             LifeExpectancy = (int) g.Average(m => m.LifeExpectancy),
             UnemploymentRate = g.Average(m => m.UnemploymentRate),
             InflationRate = g.Average(m => m.InflationRate),
             MortalityRate = g.Sum(m => m.MortalityRate)
-        })
+        }).OrderBy(m => m.Year)
         .ToList();
         }
 
