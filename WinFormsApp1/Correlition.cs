@@ -29,9 +29,9 @@ namespace WinFormsApp1
                         sumYSq += Math.Pow(y, 2);
                         sumXY += x * y;
                     }
-                    double numerator = n * sumXY - sumX * sumY;
-                    double denominator = Math.Sqrt((n * sumXSq - Math.Pow(sumX, 2)) * (n * sumYSq - Math.Pow(sumY, 2)));
-                    correlations[i, j] = numerator / denominator;
+                    double numerator = (sumXY/n) - ((sumX/n) * (sumY/n));
+                    double denominator = Math.Sqrt(((sumXSq/n) - Math.Pow((sumX/n), 2)) * ((sumYSq/n) - Math.Pow((sumY/n), 2)));
+                    correlations[i, j] = (numerator / denominator);
                 }
             }
 
