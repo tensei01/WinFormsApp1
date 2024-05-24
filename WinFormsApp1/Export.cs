@@ -102,7 +102,7 @@ namespace WinFormsApp1
                     
                     document.Add(table);
 
-                    Paragraph chartDescription = new Paragraph("График показывает зависимость нескольких величин по годам. На графике представлены данные по ВВП, продолжительности жизни, уровню безработицы, инфляции и смертности в России с 2022 по 2024 год").SetFont(font).SetFontSize(14);
+                    Paragraph chartDescription = new Paragraph("График показывает зависимость нескольких величин по годам. На графике представлены данные по ВВП, продолжительности жизни, уровню безработицы, инфляции и смертности").SetFont(font).SetFontSize(14);
                     document.Add(chartDescription);
                 }
 
