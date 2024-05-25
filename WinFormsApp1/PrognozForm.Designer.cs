@@ -40,7 +40,6 @@
             textBox1 = new TextBox();
             label4 = new Label();
             button1 = new Button();
-            label5 = new Label();
             label6 = new Label();
             comboBox1 = new ComboBox();
             menuStrip1.SuspendLayout();
@@ -49,7 +48,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(60, 125);
+            label2.Location = new Point(57, 120);
             label2.Name = "label2";
             label2.Size = new Size(36, 15);
             label2.TabIndex = 7;
@@ -58,7 +57,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(57, 153);
+            comboBox2.Location = new Point(57, 138);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(129, 23);
             comboBox2.TabIndex = 6;
@@ -70,7 +69,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(214, 24);
+            menuStrip1.Size = new Size(306, 24);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -84,13 +83,14 @@
             // экспортВPDFToolStripMenuItem
             // 
             экспортВPDFToolStripMenuItem.Name = "экспортВPDFToolStripMenuItem";
-            экспортВPDFToolStripMenuItem.Size = new Size(241, 34);
+            экспортВPDFToolStripMenuItem.Size = new Size(180, 22);
             экспортВPDFToolStripMenuItem.Text = "Экспорт в PDF";
+            экспортВPDFToolStripMenuItem.Click += экспортВPDFToolStripMenuItem_Click_1;
             // 
             // экспортВXLSXToolStripMenuItem
             // 
             экспортВXLSXToolStripMenuItem.Name = "экспортВXLSXToolStripMenuItem";
-            экспортВXLSXToolStripMenuItem.Size = new Size(241, 34);
+            экспортВXLSXToolStripMenuItem.Size = new Size(180, 22);
             экспортВXLSXToolStripMenuItem.Text = "Экспорт в XLSX";
             // 
             // fAQToolStripMenuItem
@@ -98,27 +98,28 @@
             fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
             fAQToolStripMenuItem.Size = new Size(41, 22);
             fAQToolStripMenuItem.Text = "FAQ";
+            fAQToolStripMenuItem.Click += fAQToolStripMenuItem_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(57, 346);
+            label1.Location = new Point(57, 289);
             label1.Name = "label1";
-            label1.Size = new Size(122, 15);
+            label1.Size = new Size(125, 15);
             label1.TabIndex = 9;
-            label1.Text = "Прогноз смертности";
+            label1.Text = "Прогноз смертности:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(70, 384);
+            label3.Location = new Point(57, 313);
             label3.Name = "label3";
             label3.Size = new Size(0, 15);
             label3.TabIndex = 10;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(57, 250);
+            textBox1.Location = new Point(57, 206);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(129, 23);
             textBox1.TabIndex = 11;
@@ -126,7 +127,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(57, 201);
+            label4.Location = new Point(57, 188);
             label4.Name = "label4";
             label4.Size = new Size(60, 15);
             label4.TabIndex = 12;
@@ -134,7 +135,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(57, 300);
+            button1.Location = new Point(57, 248);
             button1.Name = "button1";
             button1.Size = new Size(127, 20);
             button1.TabIndex = 13;
@@ -142,21 +143,12 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(126, 213);
-            label5.Name = "label5";
-            label5.Size = new Size(54, 25);
-            label5.TabIndex = 14;
-            label5.Text = "Поле";
-            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(57, 48);
+            label6.Location = new Point(57, 58);
             label6.Name = "label6";
-            label6.Size = new Size(69, 25);
+            label6.Size = new Size(46, 15);
             label6.TabIndex = 15;
             label6.Text = "Страна";
             // 
@@ -165,7 +157,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(57, 76);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(183, 33);
+            comboBox1.Size = new Size(183, 23);
             comboBox1.TabIndex = 16;
             // 
             // PrognozForm
@@ -175,7 +167,6 @@
             ClientSize = new Size(306, 450);
             Controls.Add(comboBox1);
             Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(textBox1);
@@ -185,7 +176,7 @@
             Controls.Add(comboBox2);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "PrognozForm";
             Text = "Прогноз";
             Load += PrognozForm_Load;
@@ -209,7 +200,6 @@
         private ToolStripMenuItem fAQToolStripMenuItem;
         private ToolStripMenuItem экспортВPDFToolStripMenuItem;
         private ToolStripMenuItem экспортВXLSXToolStripMenuItem;
-        private Label label5;
         private Label label6;
         private ComboBox comboBox1;
     }

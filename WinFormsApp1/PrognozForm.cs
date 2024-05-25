@@ -7,6 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using System.IO;
+using iText.Kernel.Font;
+using iText.IO.Font;
+using iText.Layout.Properties;
 
 namespace WinFormsApp1
 {
@@ -42,16 +49,71 @@ namespace WinFormsApp1
             List<MorderRow> data = Context._data;
             List<MorderRow> filteredData = data.Where(m => m.Country == country).OrderBy(m => m.Year).ToList();
 
-            double[] coefficient = Regression.PolynomialRegression(Regression.getValues(filteredData, variable), Array.ConvertAll(filteredData.Select(M => M.MortalityRate).ToArray(), x=> (double) x));
+            double[] coefficient = Regression.PolynomialRegression(Regression.getValues(filteredData, variable), Array.ConvertAll(filteredData.Select(M => M.MortalityRate).ToArray(), x => (double)x));
 
             double result = Math.Round(coefficient[0] + coefficient[1] * Double.Parse(textBox1.Text) + coefficient[2] * Math.Pow(Double.Parse(textBox1.Text), 2), 2);
 
             label3.Text = "" + (result < 0 ? "Никто не умрёт" : result);
         }
-
-        private void экспортВPDFToolStripMenuItem_Click(object sender, EventArgs e)
+        public void ExportToPDF(string country, string variable, double result)
         {
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openFileDialog.FileName;
+                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
+                PdfFont font = PdfFontFactory.CreateFont(fontPath);
+
+                using (PdfWriter writer = new PdfWriter(fileName))
+                using (PdfDocument pdf = new PdfDocument(writer))
+                using (Document document = new Document(pdf))
+                {
+                    Paragraph header = new Paragraph("Прогноз смертности").SetFont(font).SetFontSize(20);
+                    document.Add(header);
+
+                    Paragraph countryParagraph = new Paragraph($"Страна: {country}").SetFont(font).SetFontSize(14);
+                    document.Add(countryParagraph);
+
+                    Paragraph variableParagraph = new Paragraph($"Переменная: {variable}").SetFont(font).SetFontSize(14);
+                    document.Add(variableParagraph);
+
+                    Paragraph resultParagraph = new Paragraph($"Прогноз смертности: {result}").SetFont(font).SetFontSize(14);
+                    document.Add(resultParagraph);
+
+                    Paragraph descriptionParagraph = new Paragraph($"В результате проведения расчета прогнозирования в стране {country} с выбранным полем {variable} и значением {textBox1.Text} составляет {result}").SetFont(font).SetFontSize(14);
+                    document.Add(descriptionParagraph);
+                }
+
+                MessageBox.Show("Файл успешно сохранен.");
+            }
+        }
+
+
+
+        private void экспортВPDFToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string country = comboBox1.SelectedItem.ToString();
+                string variable = comboBox2.SelectedItem.ToString();
+                double result = double.Parse(label3.Text);
+
+                ExportToPDF(country, variable, result);
+
+                MessageBox.Show("Файл успешно экспортирован.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка при экспорте файла: " + ex.Message);
+            }
+        }
+
+        private void fAQToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutPrognozForm aboutPrognozForm = new AboutPrognozForm();
+            aboutPrognozForm.Show();
         }
     }
 }

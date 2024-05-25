@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataForm));
             dataGridView1 = new DataGridView();
             menuStrip1 = new MenuStrip();
             фвйлToolStripMenuItem = new ToolStripMenuItem();
@@ -43,18 +44,21 @@
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             fAQToolStripMenuItem = new ToolStripMenuItem();
             openFileDialog1 = new OpenFileDialog();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(13, 38);
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 24);
             dataGridView1.Margin = new Padding(4, 5, 4, 5);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1250, 709);
+            dataGridView1.Size = new Size(1263, 728);
             dataGridView1.TabIndex = 2;
             // 
             // menuStrip1
@@ -162,12 +166,24 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 24);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1263, 728);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // DataForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ScrollBar;
             ClientSize = new Size(1263, 752);
+            Controls.Add(pictureBox1);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -179,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,5 +216,6 @@
         private OpenFileDialog openFileDialog1;
         private ToolStripMenuItem fAQToolStripMenuItem;
         private ToolStripMenuItem прогназированиеToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }

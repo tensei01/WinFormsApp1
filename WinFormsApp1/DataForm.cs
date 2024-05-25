@@ -11,6 +11,9 @@ namespace WinFormsApp1
         public DataForm()
         {
             InitializeComponent();
+            dataGridView1.Dock = DockStyle.Fill;
+            menuStrip1.AutoSize = true;
+
         }
 
         private void êîððåëÿöèÿToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +59,7 @@ namespace WinFormsApp1
                     Context._data = reader.ReadCsv(openFileDialog1.FileName);
                     Context.calculate(Context._data);
                     insertTable();
+                    this.pictureBox1.Hide();
                 }
                 catch (Exception ex)
                 {
@@ -119,6 +123,11 @@ namespace WinFormsApp1
             }
             PrognozForm prognozForm = new PrognozForm();
             prognozForm.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

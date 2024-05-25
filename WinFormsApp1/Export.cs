@@ -63,7 +63,7 @@ namespace WinFormsApp1
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog.FileName;
-                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
                 PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
@@ -117,7 +117,7 @@ namespace WinFormsApp1
             {
                 string fileName = openFileDialog.FileName;
 
-                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
                 PdfFont font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
                 using (PdfWriter writer = new PdfWriter(fileName))
