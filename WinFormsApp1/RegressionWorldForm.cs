@@ -78,7 +78,7 @@ namespace WinFormsApp1
             table.Columns.Add("Фрасчёт", typeof(double));
             table.Columns.Add("Фтабл", typeof(double));
 
-            (FStatistic,PValue) = Regression.CalculateFisherFStatistic(sortedList, value);
+            (FStatistic, PValue) = Regression.CalculateFisherFStatistic(sortedList, value);
 
             label4.Text = "Вывод: " + (FStatistic > PValue ? "Критерй Фишера расчётный больше табличного, поэтому регрессия адекватна." : "Критерй Фишера расчётный меньше табличного, поэтому регрессиям не адекватна.");
 
@@ -100,8 +100,13 @@ namespace WinFormsApp1
 
         private void формулыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutRegressionForm1 form  = new AboutRegressionForm1();
+            AboutRegressionForm1 form = new AboutRegressionForm1();
             form.Show();
+        }
+
+        private void экспортWORDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            export.saveWord3();
         }
     }
 }

@@ -177,7 +177,7 @@ namespace WinFormsApp1
             aboutCorrelationForm.Show();
         }
 
-        
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 1)
@@ -205,6 +205,13 @@ namespace WinFormsApp1
 
                 MessageBox.Show(message, "Статистическая значимость", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void экспортВWORDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            export.saveWord1();
+
+
         }
     }
 }

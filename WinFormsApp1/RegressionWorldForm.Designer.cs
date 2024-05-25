@@ -41,10 +41,10 @@
             экспортToolStripMenuItem = new ToolStripMenuItem();
             экспортPdfToolStripMenuItem = new ToolStripMenuItem();
             экспортXLSXToolStripMenuItem = new ToolStripMenuItem();
+            экспортWORDToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             формулыToolStripMenuItem = new ToolStripMenuItem();
             label4 = new Label();
-            экспортWORDToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             menuStrip1.SuspendLayout();
@@ -141,6 +141,13 @@
             экспортXLSXToolStripMenuItem.Size = new Size(270, 34);
             экспортXLSXToolStripMenuItem.Text = "Экспорт XLSX";
             // 
+            // экспортWORDToolStripMenuItem
+            // 
+            экспортWORDToolStripMenuItem.Name = "экспортWORDToolStripMenuItem";
+            экспортWORDToolStripMenuItem.Size = new Size(270, 34);
+            экспортWORDToolStripMenuItem.Text = "Экспорт WORD";
+            экспортWORDToolStripMenuItem.Click += экспортWORDToolStripMenuItem_Click;
+            // 
             // оПрограммеToolStripMenuItem
             // 
             оПрограммеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { формулыToolStripMenuItem });
@@ -162,12 +169,6 @@
             label4.Name = "label4";
             label4.Size = new Size(0, 25);
             label4.TabIndex = 11;
-            // 
-            // экспортWORDToolStripMenuItem
-            // 
-            экспортWORDToolStripMenuItem.Name = "экспортWORDToolStripMenuItem";
-            экспортWORDToolStripMenuItem.Size = new Size(270, 34);
-            экспортWORDToolStripMenuItem.Text = "Экспорт WORD";
             // 
             // RegressionWorldForm
             // 

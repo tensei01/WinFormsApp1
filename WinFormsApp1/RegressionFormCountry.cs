@@ -85,7 +85,7 @@ namespace WinFormsApp1
             }
         }
 
-        
+
 
         public void insetIntoTable(List<MorderRow> sortedList, String value)
         {
@@ -105,7 +105,7 @@ namespace WinFormsApp1
 
         private void формулыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutRegressionForm1 form = new AboutRegressionForm1(); 
+            AboutRegressionForm1 form = new AboutRegressionForm1();
             form.Show();
         }
         private void экспортPdfToolStripMenuItem_Click(object sender, EventArgs e)
@@ -115,9 +115,14 @@ namespace WinFormsApp1
             string fisherTest = label4.Text;
             double fStatistic = FStatistic;
             double pValue = PValue;
-           
+
 
             export.ExportChartToPdf(chart1, "RegressionChart", country, variable, fisherTest, fStatistic, pValue);
+        }
+
+        private void экспортWORDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            export.saveWord2();
         }
     }
 }
