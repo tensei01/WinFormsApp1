@@ -14,6 +14,7 @@ using System.IO;
 using iText.Kernel.Font;
 using iText.IO.Font;
 using iText.Layout.Properties;
+using System.Reflection;
 
 namespace WinFormsApp1
 {
@@ -62,9 +63,13 @@ namespace WinFormsApp1
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog.FileName;
-                string fontPath = "C:\\Users\\tense\\Source\\Repos\\WinFormsApp2\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+                string appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-                PdfFont font = PdfFontFactory.CreateFont(fontPath);
+                // Получаем путь к шрифту относительно каталога с приложением
+                string fontPath = Path.Combine(Path.GetFullPath(Path.Combine(appPath, @"..\..\..\csv")), "ofont.ru_Arial Unicode MS.ttf");
+
+                // Создаем шрифт
+                PdfFont font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
 
                 using (PdfWriter writer = new PdfWriter(fileName))
                 using (PdfDocument pdf = new PdfDocument(writer))
