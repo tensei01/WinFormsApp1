@@ -59,7 +59,6 @@ namespace WinFormsApp1
                     Context._data = reader.ReadCsv(openFileDialog1.FileName);
                     Context.calculate(Context._data);
                     insertTable();
-                    this.pictureBox1.Hide();
                 }
                 catch (Exception ex)
                 {
