@@ -34,11 +34,16 @@ namespace WinFormsApp1
                 MessageBox.Show("Обезательное поле не заполнено.");
                 return;
             }
-            double[] coefficient = Regression.PolynomialRegression(Regression.getValues(Context._worldData, variable), Array.ConvertAll(Context._worldData.Select(M => M.MortalityRate).ToArray(), x=> (double) x));
+            double[] coefficient = Regression.PolynomialRegression(Regression.getValues(Context._worldData, variable), Array.ConvertAll(Context._worldData.Select(M => M.MortalityRate).ToArray(), x => (double)x));
 
             double result = Math.Round(coefficient[0] + coefficient[1] * Double.Parse(textBox1.Text) + coefficient[2] * Math.Pow(Double.Parse(textBox1.Text), 2), 2);
 
-            label3.Text = "" + (result < 0? "Никто не умрёт":result);
+            label3.Text = "" + (result < 0 ? "Никто не умрёт" : result);
+        }
+
+        private void экспортВPDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

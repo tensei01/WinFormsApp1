@@ -87,19 +87,19 @@ namespace WinFormsApp1
 
                     if (value >= -0.2 && value <= 0.2)
                     {
-                        e.CellStyle.BackColor = Color.Green;
+                        e.CellStyle.BackColor = Color.FromArgb(217, 234, 211); // #d9ead3
                     }
                     else if ((value < -0.2 && value >= -0.5) || (value > 0.2 && value <= 0.5))
                     {
-                        e.CellStyle.BackColor = Color.Orange;
+                        e.CellStyle.BackColor = Color.FromArgb(244, 204, 204); // #f4cccc
                     }
                     else if ((value < -0.5 && value > -1) || (value > 0.5 && value < 1))
                     {
-                        e.CellStyle.BackColor = Color.Red;
+                        e.CellStyle.BackColor = Color.FromArgb(234, 153, 153); // #ea9999
                     }
                     else
                     {
-                        e.CellStyle.BackColor = Color.Black;
+                        e.CellStyle.BackColor = Color.LightGray;
                     }
                 }
             }

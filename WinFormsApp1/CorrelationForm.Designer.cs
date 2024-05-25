@@ -36,6 +36,7 @@
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             формулаПирсонаToolStripMenuItem = new ToolStripMenuItem();
             допИнформацияToolStripMenuItem = new ToolStripMenuItem();
+            экспортВWORDToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -45,11 +46,12 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(11, 58);
+            dataGridView1.Location = new Point(8, 35);
+            dataGridView1.Margin = new Padding(2, 2, 2, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridView1.Size = new Size(1154, 673);
+            dataGridView1.Size = new Size(808, 404);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -59,28 +61,29 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { экспортToolStripMenuItem, оПрограммеToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1179, 33);
+            menuStrip1.Padding = new Padding(4, 1, 0, 1);
+            menuStrip1.Size = new Size(825, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // экспортToolStripMenuItem
             // 
-            экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВXLSXToolStripMenuItem, экспортВPDFToolStripMenuItem });
+            экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВXLSXToolStripMenuItem, экспортВPDFToolStripMenuItem, экспортВWORDToolStripMenuItem });
             экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
-            экспортToolStripMenuItem.Size = new Size(95, 29);
+            экспортToolStripMenuItem.Size = new Size(64, 22);
             экспортToolStripMenuItem.Text = "Экспорт";
             // 
             // экспортВXLSXToolStripMenuItem
             // 
             экспортВXLSXToolStripMenuItem.Name = "экспортВXLSXToolStripMenuItem";
-            экспортВXLSXToolStripMenuItem.Size = new Size(241, 34);
+            экспортВXLSXToolStripMenuItem.Size = new Size(180, 22);
             экспортВXLSXToolStripMenuItem.Text = "Экспорт в XLSX";
             экспортВXLSXToolStripMenuItem.Click += экспортВXLSXToolStripMenuItem_Click;
             // 
             // экспортВPDFToolStripMenuItem
             // 
             экспортВPDFToolStripMenuItem.Name = "экспортВPDFToolStripMenuItem";
-            экспортВPDFToolStripMenuItem.Size = new Size(241, 34);
+            экспортВPDFToolStripMenuItem.Size = new Size(180, 22);
             экспортВPDFToolStripMenuItem.Text = "Экспорт в PDF";
             экспортВPDFToolStripMenuItem.Click += экспортВPDFToolStripMenuItem_Click;
             // 
@@ -88,33 +91,39 @@
             // 
             оПрограммеToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { формулаПирсонаToolStripMenuItem, допИнформацияToolStripMenuItem });
             оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            оПрограммеToolStripMenuItem.Size = new Size(97, 29);
+            оПрограммеToolStripMenuItem.Size = new Size(65, 22);
             оПрограммеToolStripMenuItem.Text = "Справка";
             // 
             // формулаПирсонаToolStripMenuItem
             // 
             формулаПирсонаToolStripMenuItem.Name = "формулаПирсонаToolStripMenuItem";
-            формулаПирсонаToolStripMenuItem.Size = new Size(266, 34);
+            формулаПирсонаToolStripMenuItem.Size = new Size(180, 22);
             формулаПирсонаToolStripMenuItem.Text = "Формула Пирсона";
             формулаПирсонаToolStripMenuItem.Click += формулаПирсонаToolStripMenuItem_Click;
             // 
             // допИнформацияToolStripMenuItem
             // 
             допИнформацияToolStripMenuItem.Name = "допИнформацияToolStripMenuItem";
-            допИнформацияToolStripMenuItem.Size = new Size(266, 34);
+            допИнформацияToolStripMenuItem.Size = new Size(180, 22);
             допИнформацияToolStripMenuItem.Text = "Доп. информация";
             допИнформацияToolStripMenuItem.Click += допИнформацияToolStripMenuItem_Click;
             // 
+            // экспортВWORDToolStripMenuItem
+            // 
+            экспортВWORDToolStripMenuItem.Name = "экспортВWORDToolStripMenuItem";
+            экспортВWORDToolStripMenuItem.Size = new Size(180, 22);
+            экспортВWORDToolStripMenuItem.Text = "Экспорт в WORD";
+            // 
             // CorrelationForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1179, 743);
+            ClientSize = new Size(825, 446);
             Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(6, 5, 6, 5);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "CorrelationForm";
             Text = "Корреляция";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -134,5 +143,6 @@
         private ToolStripMenuItem оПрограммеToolStripMenuItem;
         private ToolStripMenuItem формулаПирсонаToolStripMenuItem;
         private ToolStripMenuItem допИнформацияToolStripMenuItem;
+        private ToolStripMenuItem экспортВWORDToolStripMenuItem;
     }
 }

@@ -27,6 +27,7 @@ using iText.IO.Font;
 using iText.Layout.Borders;
 using MathNet.Numerics.Distributions;
 using iText.Kernel.Colors;
+using System.Reflection;
 
 
 namespace WinFormsApp1
@@ -62,8 +63,8 @@ namespace WinFormsApp1
             {
                 string folderPath = folderBrowserDialog.SelectedPath;
                 string fileName = filenameMain + ".pdf";
-                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
-
+                string appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string fontPath = Path.Combine(Path.GetFullPath(Path.Combine(appPath, @"..\..\..\csv")), "ofont.ru_Arial Unicode MS.ttf");
                 PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
                 string filePath = Path.Combine(folderPath, fileName);
@@ -166,5 +167,95 @@ namespace WinFormsApp1
                 MessageBox.Show("Файл успешно сохранен.");
             }
         }
+        //public void ExportToWord(DataTable dataTable, String filenameMain, String description)
+        //{
+        //    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+        //    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        string folderPath = folderBrowserDialog.SelectedPath;
+        //        string fileName = filenameMain + ".docx";
+        //        string filePath = Path.Combine(folderPath, fileName);
+
+        //        using (DocX document = DocX.Create(filePath))
+        //        {
+        //            Paragraph header = document.InsertParagraph("Корреляция", false);
+        //            header.FontSize(20);
+
+        //            Paragraph descriptionParagraph = document.InsertParagraph(description, false);
+        //            descriptionParagraph.FontSize(14);
+
+        //            Table table = document.AddTable(dataTable.Rows.Count, dataTable.Columns.Count);
+        //            table.Design = TableDesign.TableGrid;
+
+        //            // Добавляем заголовки таблицы
+        //            for (int i = 0; i < dataTable.Columns.Count; i++)
+        //            {
+        //                table.Rows[0].Cells[i].Paragraphs[0].Append(dataTable.Columns[i].ColumnName);
+        //            }
+
+        //            // Добавляем данные в таблицу
+        //            for (int i = 0; i < dataTable.Rows.Count; i++)
+        //            {
+        //                for (int j = 0; j < dataTable.Columns.Count; j++)
+        //                {
+        //                    table.Rows[i + 1].Cells[j].Paragraphs[0].Append(dataTable.Rows[i][j].ToString());
+        //                }
+        //            }
+
+        //            Paragraph chartDescription = document.InsertParagraph("График показывает зависимость нескольких величин по годам. На графике представлены данные по ВВП, продолжительности жизни, уровню безработицы, инфляции и смертности", false);
+        //            chartDescription.FontSize(14);
+        //        }
+
+        //        MessageBox.Show("Файл успешно сохранен.");
+        //    }
+        //}
+
+        //public void ExportChartToWord(Chart chart, string filenameMain, string country, string variable, string fisherTest, double fStatistic, double pValue)
+        //{
+        //    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+        //    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        string folderPath = folderBrowserDialog.SelectedPath;
+        //        string fileName = filenameMain + "_" + count + ".docx";
+        //        string filePath = Path.Combine(folderPath, fileName);
+
+        //        using (DocX document = DocX.Create(filePath))
+        //        {
+        //            Paragraph header = document.InsertParagraph("Полиномиальная регрессия", false);
+        //            header.FontSize(20);
+
+        //            Paragraph countryParagraph = document.InsertParagraph("Страна: " + country, false);
+        //            countryParagraph.FontSize(14);
+
+        //            Paragraph variableParagraph = document.InsertParagraph("Выбранное поле: " + variable, false);
+        //            variableParagraph.FontSize(14);
+
+        //            MemoryStream stream = new MemoryStream();
+        //            chart.SaveImage(stream, ChartImageFormat.Png);
+        //            document.AddPicture(stream.ToArray(), 0, 0, "png", "Chart");
+
+        //            // Добавляем таблицу с границами
+        //            Table table = document.AddTable(3, 2);
+        //            table.Design = TableDesign.TableGrid;
+
+        //            // Добавляем заголовок таблицы
+        //            table.Rows[0].Cells[0].Paragraphs[0].Append("Критерий Фишера");
+        //            table.Rows[0].Cells[0].MergeCells(1, 2);
+
+        //            // Добавляем ячейки в таблицу с границами
+        //            table.Rows[1].Cells[0].Paragraphs[0].Append("Фрасчетное");
+        //            table.Rows[1].Cells[1].Paragraphs[0].Append(fStatistic.ToString());
+
+        //            table.Rows[2].Cells[0].Paragraphs[0].Append("Фтабличное");
+        //            table.Rows[2].Cells[1].Paragraphs[0].Append(pValue.ToString());
+
+        //            table.Rows[3].Cells[0].Paragraphs[0].Append("");
+        //            table.Rows[3].Cells[1].Paragraphs[0].Append(fisherTest);
+        //        }
+
+        //        count++;
+        //        MessageBox.Show("Файл успешно сохранен.");
+        //    }
+        //}
     }
 }
