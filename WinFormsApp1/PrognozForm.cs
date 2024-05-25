@@ -18,6 +18,9 @@ namespace WinFormsApp1
         {
             InitializeComponent();
             string[] variableNames = { "ВВП", "Продолжительность жизни", "Уровень безработицы", "Инфляция" };
+            List<MorderRow> data = Context._data;
+            var countries = from data1 in data group data1 by data1.Country;
+            foreach (var country in countries) { comboBox1.Items.Add(country.Key); }
             foreach (string variable in variableNames) { comboBox2.Items.Add(variable); }
         }
 
@@ -28,13 +31,18 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            String country = comboBox1.Text;
             String variable = comboBox2.Text;
-            if (variable == null || variable.Equals(""))
+            if (country == null || variable == null || country.Equals("") || variable.Equals(""))
             {
                 MessageBox.Show("Обезательное поле не заполнено.");
                 return;
             }
-            double[] coefficient = Regression.PolynomialRegression(Regression.getValues(Context._worldData, variable), Array.ConvertAll(Context._worldData.Select(M => M.MortalityRate).ToArray(), x => (double)x));
+
+            List<MorderRow> data = Context._data;
+            List<MorderRow> filteredData = data.Where(m => m.Country == country).OrderBy(m => m.Year).ToList();
+
+            double[] coefficient = Regression.PolynomialRegression(Regression.getValues(filteredData, variable), Array.ConvertAll(filteredData.Select(M => M.MortalityRate).ToArray(), x=> (double) x));
 
             double result = Math.Round(coefficient[0] + coefficient[1] * Double.Parse(textBox1.Text) + coefficient[2] * Math.Pow(Double.Parse(textBox1.Text), 2), 2);
 

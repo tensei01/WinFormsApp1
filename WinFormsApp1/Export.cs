@@ -58,18 +58,16 @@ namespace WinFormsApp1
 
         public void ExportToPDF(DataTable dataTable, String filenameMain, String description)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string folderPath = folderBrowserDialog.SelectedPath;
-                string fileName = filenameMain + ".pdf";
-                string appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string fontPath = Path.Combine(Path.GetFullPath(Path.Combine(appPath, @"..\..\..\csv")), "ofont.ru_Arial Unicode MS.ttf");
+                string fileName = openFileDialog.FileName;
+                string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
+
                 PdfFont font = PdfFontFactory.CreateFont(fontPath);
 
-                string filePath = Path.Combine(folderPath, fileName);
-
-                using (PdfWriter writer = new PdfWriter(filePath))
+                using (PdfWriter writer = new PdfWriter(fileName))
                 using (PdfDocument pdf = new PdfDocument(writer))
                 using (Document document = new Document(pdf))
                 {
@@ -113,17 +111,16 @@ namespace WinFormsApp1
 
         public void ExportChartToPdf(Chart chart, string filenameMain, string country, string variable, string fisherTest, double fStatistic, double pValue)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string folderPath = folderBrowserDialog.SelectedPath;
-                string fileName = filenameMain + "_" + count + ".pdf";
-                string filePath = Path.Combine(folderPath, fileName);
+                string fileName = openFileDialog.FileName;
 
                 string fontPath = "C:\\Users\\pkeke\\courses\\WinFormsApp1\\WinFormsApp1\\csv\\ofont.ru_Arial Unicode MS.ttf";
 
                 PdfFont font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
-                using (PdfWriter writer = new PdfWriter(filePath))
+                using (PdfWriter writer = new PdfWriter(fileName))
                 using (PdfDocument pdf = new PdfDocument(writer))
                 using (Document document = new Document(pdf))
                 {
