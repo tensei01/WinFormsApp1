@@ -15,6 +15,7 @@ namespace WinFormsApp1
     public partial class RegressionWorldForm : Form
     {
         private Export export;
+        private ExportToWord exportToWord = new ExportToWord();
         public double FStatistic { get; private set; }
         public double PValue { get; private set; }
         public RegressionWorldForm()
@@ -106,7 +107,14 @@ namespace WinFormsApp1
 
         private void экспортWORDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            export.saveWord3();
+            
+            string variable = comboBox2.Text;
+            string fisherTest = label4.Text;
+            double fStatistic = FStatistic;
+            double pValue = PValue;
+
+
+            exportToWord.ExportChartToWord(chart1, "RegressionChart", "Все страны", variable, fisherTest, fStatistic, pValue);
         }
     }
 }

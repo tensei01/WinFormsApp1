@@ -27,6 +27,7 @@ namespace WinFormsApp1
     {
         private Correlition _correlition = new Correlition();
         private Export export = new Export();
+        private ExportToWord exportToWord = new ExportToWord(); 
         public CorrelationForm()
         {
             InitializeComponent();
@@ -209,8 +210,8 @@ namespace WinFormsApp1
 
         private void экспортВWORDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            export.saveWord1();
-
+            string description = "Для подсчета корреляции между смертностью и годом используется коэффициент корреляции Пирсона. Этот коэффициент показывает, насколько сильно две переменные связаны между собой. Значение коэффициента корреляции Пирсона всегда находится в диапазоне от -1 до 1. Если значение равно 1, то это означает, что между переменными существует прямая зависимость: при увеличении одной переменной увеличивается и другая. Если значение равно -1, то это означает, что между переменными существует обратная зависимость: при увеличении одной переменной уменьшается другая. Если значение равно 0, то это означает, что между переменными нет никакой зависимости.";
+            exportToWord.exportToWord((DataTable)dataGridView1.DataSource, "correlation", description);
 
         }
     }
