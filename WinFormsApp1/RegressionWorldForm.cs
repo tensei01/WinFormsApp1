@@ -106,7 +106,11 @@ namespace WinFormsApp1
 
         private void экспортWORDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            export.saveWord3();
+            string variable = comboBox2.Text;
+            string fisherTest = label4.Text;
+            double fStatistic = FStatistic;
+            double pValue = PValue;
+            export.ExportChartToWord(chart1, "RegressionChart", "Все страны", variable, fisherTest, fStatistic, pValue);
         }
     }
 }

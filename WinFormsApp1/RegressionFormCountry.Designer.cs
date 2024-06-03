@@ -42,7 +42,6 @@
             menuStrip1 = new MenuStrip();
             экспортToolStripMenuItem = new ToolStripMenuItem();
             экспортPdfToolStripMenuItem = new ToolStripMenuItem();
-            экспортXLSXToolStripMenuItem = new ToolStripMenuItem();
             экспортWORDToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             формулыToolStripMenuItem = new ToolStripMenuItem();
@@ -142,7 +141,7 @@
             // 
             // экспортToolStripMenuItem
             // 
-            экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортPdfToolStripMenuItem, экспортXLSXToolStripMenuItem, экспортWORDToolStripMenuItem });
+            экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортPdfToolStripMenuItem, экспортWORDToolStripMenuItem });
             экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
             экспортToolStripMenuItem.Size = new Size(95, 29);
             экспортToolStripMenuItem.Text = "Экспорт";
@@ -153,12 +152,6 @@
             экспортPdfToolStripMenuItem.Size = new Size(270, 34);
             экспортPdfToolStripMenuItem.Text = "Экспорт PDF";
             экспортPdfToolStripMenuItem.Click += экспортPdfToolStripMenuItem_Click;
-            // 
-            // экспортXLSXToolStripMenuItem
-            // 
-            экспортXLSXToolStripMenuItem.Name = "экспортXLSXToolStripMenuItem";
-            экспортXLSXToolStripMenuItem.Size = new Size(270, 34);
-            экспортXLSXToolStripMenuItem.Text = "Экспорт XLSX";
             // 
             // экспортWORDToolStripMenuItem
             // 
@@ -230,7 +223,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem экспортToolStripMenuItem;
         private ToolStripMenuItem экспортPdfToolStripMenuItem;
-        private ToolStripMenuItem экспортXLSXToolStripMenuItem;
         private ToolStripMenuItem оПрограммеToolStripMenuItem;
         private ToolStripMenuItem формулыToolStripMenuItem;
         private Label label4;

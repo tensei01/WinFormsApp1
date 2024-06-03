@@ -31,7 +31,6 @@
             dataGridView1 = new DataGridView();
             menuStrip1 = new MenuStrip();
             экспортToolStripMenuItem = new ToolStripMenuItem();
-            экспортВXLSXToolStripMenuItem = new ToolStripMenuItem();
             экспортВPDFToolStripMenuItem = new ToolStripMenuItem();
             экспортВWORDToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
@@ -66,17 +65,10 @@
             // 
             // экспортToolStripMenuItem
             // 
-            экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВXLSXToolStripMenuItem, экспортВPDFToolStripMenuItem, экспортВWORDToolStripMenuItem });
+            экспортToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { экспортВPDFToolStripMenuItem, экспортВWORDToolStripMenuItem });
             экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
             экспортToolStripMenuItem.Size = new Size(95, 29);
             экспортToolStripMenuItem.Text = "Экспорт";
-            // 
-            // экспортВXLSXToolStripMenuItem
-            // 
-            экспортВXLSXToolStripMenuItem.Name = "экспортВXLSXToolStripMenuItem";
-            экспортВXLSXToolStripMenuItem.Size = new Size(270, 34);
-            экспортВXLSXToolStripMenuItem.Text = "Экспорт в XLSX";
-            экспортВXLSXToolStripMenuItem.Click += экспортВXLSXToolStripMenuItem_Click;
             // 
             // экспортВPDFToolStripMenuItem
             // 
@@ -137,7 +129,6 @@
         private DataGridView dataGridView1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem экспортToolStripMenuItem;
-        private ToolStripMenuItem экспортВXLSXToolStripMenuItem;
         private ToolStripMenuItem экспортВPDFToolStripMenuItem;
         private ToolStripMenuItem оПрограммеToolStripMenuItem;
         private ToolStripMenuItem формулаПирсонаToolStripMenuItem;

@@ -28,6 +28,8 @@ using iText.Layout.Borders;
 using MathNet.Numerics.Distributions;
 using iText.Kernel.Colors;
 using System.Reflection;
+using Accord.IO;
+using Xceed.Words.NET;
 
 
 namespace WinFormsApp1
@@ -173,10 +175,8 @@ namespace WinFormsApp1
             }
         }
 
-
-        public void saveWord1()
+        public void ExportToWord(DataTable dataTable, String filenameMain, String description)
         {
-
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Word Documents (*.docx)|*.docx|All Files (*.*)|*.*";
             saveFileDialog.FilterIndex = 1;
@@ -185,53 +185,101 @@ namespace WinFormsApp1
             // Отобразите диалоговое окно
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Получите полный путь к выбранному файлу
                 string selectedFilePath = saveFileDialog.FileName;
 
-                File.Copy("C:\\test\\cor.docx", selectedFilePath, true);
-            }
+                using (DocX document = DocX.Create(selectedFilePath))
+                {
+                    Xceed.Document.NET.Paragraph header = document.InsertParagraph("Корреляция", false);
+                    header.FontSize(20);
 
-            MessageBox.Show("Файл успешно сохранен.");
+                    Xceed.Document.NET.Paragraph descriptionParagraph = document.InsertParagraph(description, false);
+                    descriptionParagraph.FontSize(14);
+
+                    Xceed.Document.NET.Table table = document.AddTable(dataTable.Rows.Count, dataTable.Columns.Count);
+                    table.Design = Xceed.Document.NET.TableDesign.TableGrid;
+                    table.Alignment = Xceed.Document.NET.Alignment.center;
+                    table.SetWidths(new float[] { 115f, 115f });
+
+                    // Добавляем заголовки таблицы
+                    for (int i = 0; i < dataTable.Columns.Count; i++)
+                    {
+                        table.Rows[0].Cells[i].Paragraphs[0].Append(dataTable.Columns[i].ColumnName);
+                    }
+
+                    // Добавляем данные в таблицу
+                    for (int i = 1; i < dataTable.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataTable.Columns.Count; j++)
+                        {
+                            table.Rows[i].Cells[j].Paragraphs[0].Append(dataTable.Rows[i][j].ToString());
+                        }
+                    }
+
+                    descriptionParagraph.InsertTableAfterSelf(table);
+
+                    Xceed.Document.NET.Paragraph chartDescription = document.InsertParagraph("График показывает зависимость нескольких величин по годам. На графике представлены данные по ВВП, продолжительности жизни, уровню безработицы, инфляции и смертности", false);
+                    chartDescription.FontSize(14);
+                    document.Save();
+                }
+
+                MessageBox.Show("Файл успешно сохранен.");
+            }
         }
 
-        public void saveWord2()
+        public void ExportChartToWord(Chart chart, string filenameMain, string country, string variable, string fisherTest, double fStatistic, double pValue)
         {
-
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Word Documents (*.docx)|*.docx|All Files (*.*)|*.*";
             saveFileDialog.FilterIndex = 1;
             saveFileDialog.RestoreDirectory = true;
 
-            // Отобразите диалоговое окно
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Получите полный путь к выбранному файлу
                 string selectedFilePath = saveFileDialog.FileName;
 
-                File.Copy("C:\\test\\reg.docx", selectedFilePath, true);
+                using (DocX document = DocX.Create(selectedFilePath))
+                {
+                    Xceed.Document.NET.Paragraph header = document.InsertParagraph("Полиномиальная регрессия", false);
+                    header.FontSize(20);
+
+                    Xceed.Document.NET.Paragraph countryParagraph = document.InsertParagraph("Страна: " + country, false);
+                    countryParagraph.FontSize(14);
+
+                    Xceed.Document.NET.Paragraph variableParagraph = document.InsertParagraph("Выбранное поле: " + variable, false);
+                    variableParagraph.FontSize(14);
+
+                    MemoryStream stream = new MemoryStream();
+                    chart.SaveImage(stream, ChartImageFormat.Png);
+
+                    Xceed.Document.NET.Image image = document.AddImage(stream);
+                    variableParagraph.AppendPicture(image.CreatePicture());
+
+                    // Добавляем таблицу с границами
+                    Xceed.Document.NET.Table table = document.AddTable(4, 2);
+                    table.Design = Xceed.Document.NET.TableDesign.TableGrid;
+
+                    // Добавляем заголовок таблицы
+                    table.Rows[0].Cells[0].Paragraphs[0].Append("Критерий Фишера");
+
+                    // Добавляем ячейки в таблицу с границами
+                    table.Rows[1].Cells[0].Paragraphs[0].Append("Фрасчетное");
+                    table.Rows[1].Cells[1].Paragraphs[0].Append(fStatistic.ToString());
+
+                    table.Rows[2].Cells[0].Paragraphs[0].Append("Фтабличное");
+                    table.Rows[2].Cells[1].Paragraphs[0].Append(pValue.ToString());
+
+                    table.Rows[3].Cells[0].Paragraphs[0].Append("");
+                    table.Rows[3].Cells[1].Paragraphs[0].Append(fisherTest);
+
+                    variableParagraph.AppendLine("Проверка").FontSize(14);
+                    variableParagraph.InsertTableAfterSelf(table);
+
+                    document.Save();
+                }
+
+                count++;
+                MessageBox.Show("Файл успешно сохранен.");
             }
-
-            MessageBox.Show("Файл успешно сохранен.");
-        }
-
-        public void saveWord3()
-        {
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Word Documents (*.docx)|*.docx|All Files (*.*)|*.*";
-            saveFileDialog.FilterIndex = 1;
-            saveFileDialog.RestoreDirectory = true;
-
-            // Отобразите диалоговое окно
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // Получите полный путь к выбранному файлу
-                string selectedFilePath = saveFileDialog.FileName;
-
-                File.Copy("C:\\test\\reg_world.docx", selectedFilePath, true);
-            }
-
-            MessageBox.Show("Файл успешно сохранен.");
         }
     }
 }

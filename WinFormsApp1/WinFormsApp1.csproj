@@ -44,6 +44,7 @@
   <ItemGroup>
     <PackageReference Include="Accord.Math" Version="3.8.0" />
     <PackageReference Include="Accord.Statistics" Version="3.8.0" />
+    <PackageReference Include="Aspose.Words" Version="24.5.0" />
     <PackageReference Include="DocX" Version="3.0.0" />
     <PackageReference Include="EPPlus" Version="7.1.2" />
     <PackageReference Include="GrapeCity.DataVisualization.Chart" Version="0.4.136" />
