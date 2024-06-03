@@ -20,6 +20,7 @@ namespace WinFormsApp1
         public double FStatistic { get; private set; }
         public double PValue { get; private set; }
         private Export export;
+        private ExportToWord exportToWord = new ExportToWord(); 
         public RegressionFormCountry()
         {
             InitializeComponent();
@@ -129,7 +130,7 @@ namespace WinFormsApp1
             double pValue = PValue;
 
 
-            export.ExportChartToWord(chart1, "RegressionChart", country, variable, fisherTest, fStatistic, pValue);
+            exportToWord.ExportChartToWord (chart1, "RegressionChart", country, variable, fisherTest, fStatistic, pValue);
         }
     }
 }
